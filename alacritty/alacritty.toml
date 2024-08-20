@@ -1,0 +1,32 @@
+[window]
+
+opacity = 0.9
+
+[font]
+
+size = 12.0
+
+[font.normal]
+
+family = "ComicShannsMono Nerd Font Mono"
+
+[font.bold]
+
+family = "ComicShannsMono Nerd Font Mono"
+
+[font.italic]
+
+family = "ComicShannsMono Nerd Font Mono"
+
+[font.bold_italic]
+
+family = "ComicShannsMono Nerd Font Mono"
+
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Control|Shift"
+
+[keyboard.bindings.command]
+args = ["/home/soy/alacritty_new.zsh"]
+program = "/bin/zsh"
