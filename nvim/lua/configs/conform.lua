@@ -1,25 +1,19 @@
 local options = {
   formatters_by_ft = {
-    javascript = { "prettier" },
-    typescript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescriptreact = { "prettier" },
-    svelte = { "prettier" },
+    lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    json = { "prettier" },
-    yaml = { "prettier" },
-    markdown = { "prettier" },
-    graphql = { "prettier" },
-    lua = { "stylua" },
-    python = { "isort", "black" },
+    js = { "prettier" },
+    tsx = { "prettier" },
+    jsx = { "prettier" },
+    python = { "black" },
   },
 
   format_on_save = {
-  --   -- These options will be passed to conform.format()
+    -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },
 }
 
-return options
+require("conform").setup(options)

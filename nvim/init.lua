@@ -38,5 +38,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
-vim.opt.shiftwidth = 4
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.relativenumber = true
