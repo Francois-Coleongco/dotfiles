@@ -11,7 +11,7 @@ lspconfig.rust_analyzer.setup {
 } -- need to add formatting bawegwj
 
 -- EXAMPLE
-local servers = { "html", "cssls", "pyright", "gopls" }
+local servers = { "html", "cssls", "pyright", "gopls", "jdtls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config

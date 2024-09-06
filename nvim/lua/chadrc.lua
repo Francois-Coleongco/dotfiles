@@ -5,7 +5,7 @@
 local M = {}
 
 M.ui = {
-	theme = "gruvchad",
+	theme = "blossom_light",
   transparency = true,
 	-- hl_override = {
 	-- 	Comment = { italic = true },
