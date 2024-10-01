@@ -32,11 +32,6 @@ local servers = {
      settings = {
        gopls = {
  	usePlaceholders = true,
- 	format = {
- 	  tabWidth = 4,         -- Set tab width to 4 spaces
- 	  indentWidth = 4,      -- Set indent width to 4 spaces
- 	  useSpaces = true,      -- Use spaces instead of tabs
- 	},
        },
      },
    },

@@ -20,7 +20,15 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
 
   use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
-use({'neovim/nvim-lspconfig'})
-use({'hrsh7th/nvim-cmp'})
-use({'hrsh7th/cmp-nvim-lsp'})
+  use({'neovim/nvim-lspconfig'})
+  use({'hrsh7th/nvim-cmp'})
+  use({'hrsh7th/cmp-nvim-lsp'})
+
+    use {
+	"windwp/nvim-autopairs",
+	event = "InsertEnter",
+	config = function()
+	    require("nvim-autopairs").setup {}
+	end
+    }
 end)
