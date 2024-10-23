@@ -1,27 +1,3 @@
-###############
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-# NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOTEEEEE the config i have uses starship so if u want it to make ur temrinal look ooo so smexy go here: https://starship.rs/
-#
-#
-#
-# alsooooooooooo my fav preset for starship (run this in ur termianl) => starship preset plain-text-symbols -o ~/.config/starship.toml
-
-
-
-
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -32,6 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -39,7 +16,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# ZSH_THEME="robbyrussell"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -94,9 +70,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
 zstyle ':omz:plugins:nvm' lazy yes
-
-plugins=(git nvm)
+plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -128,13 +104,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-eval "$(starship init zsh)"
-
 export PATH="$PATH:/opt/nvim-linux64/bin"
-
-export PATH=$PATH:/home/soy/.nvm/versions/node/v22.6.0/bin
-
+export PATH="$HOME/.nvm/versions/node/v22.9.0/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
-export PATH="$PATH:$HOME/development/flutter/bin"
+export PATH="$HOME/.local/bin:$PATH"
+
+alias nvim="lvim"
