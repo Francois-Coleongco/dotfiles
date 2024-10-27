@@ -4,17 +4,49 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
-vim.opt.shiftwidth = 4        -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4           -- insert 2 spaces for a tab
-vim.opt.relativenumber = true -- relative line numbers
-vim.opt.wrap = true           -- wrap lines
+--
+-- General Settings
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+vim.opt.showmatch = true
+vim.opt.foldmethod = "syntax"
+vim.opt.foldlevelstart = 99
 vim.opt.scrolloff = 20
-lvim.format_on_save = true
 
-lvim.colorscheme = "default"
+-- Tabs and Indentation
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
 
--- Save the file when leaving insert mode
-vim.api.nvim_create_autocmd("InsertLeave", {
-    pattern = "*",
-    command = "write",
-})
+-- Search Settings
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+
+-- Performance
+vim.opt.lazyredraw = true
+vim.opt.timeoutlen = 500
+
+-- Misc
+vim.opt.clipboard = "unnamedplus"
+vim.opt.updatetime = 300
+vim.opt.mouse = "a"
+
+-- Enable line wrapping
+vim.opt.wrap = true
+
+-- Enable 24-bit RGB color in terminal
+vim.opt.termguicolors = true
+
+lvim.keys.insert_mode["<A-j>"] = false
+lvim.keys.insert_mode["<A-k>"] = false
+lvim.keys.normal_mode["<A-j>"] = false
+lvim.keys.normal_mode["<A-k>"] = false
+lvim.keys.visual_block_mode["<A-j>"] = false
+lvim.keys.visual_block_mode["<A-k>"] = false
+lvim.keys.visual_block_mode["J"] = false
+lvim.keys.visual_block_mode["K"] = false
