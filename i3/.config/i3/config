@@ -25,8 +25,8 @@ font pango:Ubuntu Mono 8
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode Virtual1 2880x1800_60.00; xrandr --output Virtual1 --mode 2880x1800_60.00 --scale 1x1; feh --bg-fill ~/dotfiles/added_bgs/neon-shacks-nord.png
-
+exec --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/neon-shacks-nord.png
+# xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode Virtual1 2880x1800_60.00; xrandr --output Virtual1 --mode 2880x1800_60.00 --scale 1x1;
 exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id picom -Gb
 exec_always --no-startup-id autotiling
@@ -170,10 +170,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
