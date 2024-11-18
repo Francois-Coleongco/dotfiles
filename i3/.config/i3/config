@@ -7,13 +7,14 @@
 default_border pixel 10
 
 # Set rounded corners for all windows
-
+gaps inner 5
+gaps outer 5
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
-
+set $super Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Ubuntu Mono 8
@@ -25,10 +26,12 @@ font pango:Ubuntu Mono 8
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/neon-shacks-nord.png
-# xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode Virtual1 2880x1800_60.00; xrandr --output Virtual1 --mode 2880x1800_60.00 --scale 1x1;
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/astronaut-nord.png
+
+exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
+
 exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
-exec --no-startup-id picom -Gb
+exec --no-startup-id picom --corner-radius 24 -o 0.75
 exec_always --no-startup-id autotiling
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -56,12 +59,17 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-
 # kill focused window
 bindsym $mod+q kill
 
+# user added
+
+bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend
+bindsym $mod+p exec --no-startup-id brave-browser --incognito
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -b
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -195,4 +203,4 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 #}
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
