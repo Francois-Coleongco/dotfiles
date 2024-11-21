@@ -73,6 +73,8 @@ bindsym $mod+q kill
 bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
+bindsym Print exec --no-startup-id flameshot gui
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -b
 
