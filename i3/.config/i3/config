@@ -45,6 +45,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --noeork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# locking
+
+bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend
 # adjust brightness
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
@@ -70,7 +73,8 @@ bindsym $mod+q kill
 
 # user added
 
-bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend
+bindsym $mod+f exec i3-sensible-terminal -e fzf
+
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
 bindsym Print exec --no-startup-id flameshot gui
@@ -115,7 +119,7 @@ bindsym $mod+u split h
 bindsym $mod+i split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
