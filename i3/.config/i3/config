@@ -32,8 +32,8 @@ exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 
 
 exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id picom --corner-radius 24 -o 0.75
-exec_always --no-startup-id autotiling
-exec --no-startup-id xautolock -time 5 -locker ./locker.sh
+exec --no-startup-id autotiling
+exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend"
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -67,7 +67,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec /home/soy/.local/kitty.app/bin/kitty
 # kill focused window
 bindsym $mod+q kill
 
@@ -214,5 +214,6 @@ bindsym $mod+r mode "resize"
 #bar {
 #        status_command i3status
 #}
-
+floating_minimum_size 450 x 450
+floating_maximum_size 1500 x 1500
 for_window [class="^.*"] border pixel 0
