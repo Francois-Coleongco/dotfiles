@@ -24,6 +24,7 @@ vim.opt.tabstop = 4           -- insert 2 spaces for a tab
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.wrap = true           -- wrap lines
 
+vim.opt.clipboard = "unnamedplus"
 
 lvim.plugins = {
 
