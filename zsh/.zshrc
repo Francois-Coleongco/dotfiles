@@ -120,7 +120,7 @@ alias vim="lvim"
 alias x="exit"
 alias gt="git"
 alias icat="kitten icat"
-alias moosic='tmux new-session -d -s music "cava" \; split-window -h \; send-keys "cd ~/Music/; cmus" C-m \; attach-session -d'
+alias moosic="cd ~/Music/; cmus"
 
 
 
