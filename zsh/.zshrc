@@ -121,6 +121,12 @@ alias x="exit"
 alias gt="git"
 alias icat="kitten icat"
 
+moosic () {
+    link=$1
+    cd ~/Music/
+    yt-dlp "$link"
+    
+}
 
 
 declare -A pomo_options
