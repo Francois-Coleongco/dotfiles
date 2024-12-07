@@ -120,7 +120,6 @@ alias vim="lvim"
 alias x="exit"
 alias gt="git"
 alias icat="kitten icat"
-alias moosic="cd ~/Music/; cmus"
 
 
 
