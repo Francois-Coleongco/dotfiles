@@ -130,7 +130,7 @@ moosic () {
 
 
 declare -A pomo_options
-pomo_options["work"]="45"
+pomo_options["work"]="180"
 pomo_options["break"]="15"
 
 pomodoro () {

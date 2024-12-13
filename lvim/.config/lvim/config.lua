@@ -5,7 +5,10 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
 --
-lvim.transparent_window = true
+
+-- cosmetics
+lvim.transparent_window = false
+lvim.colorscheme = "default"
 
 
 lvim.keys.insert_mode["<A-j>"] = false
