@@ -77,6 +77,8 @@ bindsym $mod+f exec i3-sensible-terminal -e fzf
 
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
+bindsym $mod+m exec --no-startup-id kitty --detach cmus
+
 bindsym Print exec --no-startup-id flameshot gui
 
 # start dmenu (a program launcher)
