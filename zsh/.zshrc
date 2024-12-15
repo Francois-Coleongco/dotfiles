@@ -113,10 +113,12 @@ export PATH=$PATH:/home/soy/.nvm/versions/node/v20.18.0/bin
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
+export PATH="$PATH:$HOME/go/bin"
+
 export PATH="$PATH:$HOME/.local/kitty.app/bin"
 # eval "$(starship init zsh)"
 
-alias vim="lvim"
+alias vim="nvim"
 alias x="exit"
 alias gt="git"
 alias icat="kitten icat"

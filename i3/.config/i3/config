@@ -26,13 +26,13 @@ font pango:Ubuntu Mono 8
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-7pl6q3.jpg
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-wedd57.png
 
 exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
 
 exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id picom --corner-radius 24 -o 0.75
-exec --no-startup-id autotiler
+exec --no-startup-id autotiling
 exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend"
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -76,6 +76,8 @@ bindsym $mod+Escape kill
 bindsym $mod+f exec i3-sensible-terminal -e fzf
 
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
+
+bindsym $mod+o exec --no-startup-id kitty --detach ttyfio
 
 bindsym $mod+m exec --no-startup-id kitty --detach sh -c "cd /home/hitori/Music && cmus"
 

@@ -48,3 +48,12 @@ require 'telescope'.setup {
     },
 
 }
+
+-- In lv-config.lua or the plugin section
+lvim.plugins = {
+    -- Add plenary.nvim
+    { "nvim-lua/plenary.nvim" },
+
+    -- Add harpoon plugin
+    { "ThePrimeagen/harpoon" },
+}
