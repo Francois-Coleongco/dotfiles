@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 20
@@ -21,7 +22,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " "
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -69,9 +69,18 @@ require("lazy").setup({
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap = true})
+
 				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			end,
 		},
+
+		{ 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'L3MON4D3/LuaSnip' },
 		{
 			"nvimtools/none-ls.nvim",
 			config = function()
@@ -91,6 +100,8 @@ require("lazy").setup({
 		{
 			'windwp/nvim-autopairs'
 		},
+
+		{ 'mbbill/undotree' }
 	},
 })
 
@@ -100,6 +111,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 local config = require("nvim-treesitter.configs")
 
@@ -110,3 +122,39 @@ config.setup({
 })
 
 require('nvim-autopairs').setup{}
+
+vim.cmd('set undofile')
+
+local cmp = require'cmp'
+local luasnip = require'luasnip'
+
+cmp.setup({
+    -- General configuration
+    completion = {
+        autocomplete = { cmp.TriggerEvent.TextChanged, cmp.TriggerEvent.InsertEnter },
+    },
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)  -- Expanding snippets using LuaSnip
+        end,
+    },
+    mapping = {
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-u>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+        { name = 'nvim_lsp' },    -- LSP completion
+        { name = 'buffer' },      -- Buffer completion
+        { name = 'path' },        -- Path completion
+        { name = 'luasnip' },     -- LuaSnip for snippets
+    },
+    experimental = {
+        native_menu = false,
+        ghost_text = true,  -- Enable ghost text for better UI feedback
+    },
+})
