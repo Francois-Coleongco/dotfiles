@@ -26,6 +26,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
+
 	{
     'goolord/alpha-nvim',
     dependencies = { 'echasnovski/mini.icons' },
@@ -101,7 +102,9 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap
 			'windwp/nvim-autopairs'
 		},
 
-		{ 'mbbill/undotree' }
+		{ 'mbbill/undotree' },
+
+		{'norcalli/nvim-colorizer.lua'}
 	},
 })
 
@@ -121,9 +124,9 @@ config.setup({
 	indent = { enable = true },
 })
 
-require('nvim-autopairs').setup{}
 
 vim.cmd('set undofile')
+vim.cmd('set termguicolors')
 
 local cmp = require'cmp'
 local luasnip = require'luasnip'
@@ -158,3 +161,6 @@ cmp.setup({
         ghost_text = true,  -- Enable ghost text for better UI feedback
     },
 })
+
+require'colorizer'.setup()
+require('nvim-autopairs').setup{}
