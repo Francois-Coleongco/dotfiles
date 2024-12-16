@@ -216,7 +216,16 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	status_command i3status
+	colors {
+		background #2E3440
+        statusline #D8DEE9
+        separator  #4C566A
+        focused_workspace #88C0D0 #3B4252 #88C0D0
+        active_workspace #E5E9F0 #3B4252 #81A1C1
+        inactive_workspace #4C566A #2E3440 #4C566A
+        urgent_workspace #BF616A #2E3440 #BF616A
+	}
 }
 floating_minimum_size 450 x 450
 floating_maximum_size 1500 x 1500
