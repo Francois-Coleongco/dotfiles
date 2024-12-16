@@ -116,7 +116,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/go/bin"
 
 export PATH="$PATH:$HOME/.local/kitty.app/bin"
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 alias vim="nvim"
 alias x="exit"
@@ -127,7 +127,7 @@ moosic () {
     link=$1
     cd ~/Music/
     yt-dlp "$link"
-    
+	cd    
 }
 
 
