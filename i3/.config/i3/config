@@ -30,7 +30,7 @@ exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-wedd57.
 
 exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
 
-exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
+# exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id autotiling
 exec --no-startup-id system76-power profile battery
 exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend"
@@ -215,9 +215,9 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#        status_command i3status
-#}
+bar {
+        status_command i3status
+}
 floating_minimum_size 450 x 450
 floating_maximum_size 1500 x 1500
 for_window [class="^.*"] border pixel 2
