@@ -26,11 +26,11 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-qzm1or.jpg
+exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/pop/kate-hazen-pop-m3lvin.png
 
 exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
 
-# exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
+exec --no-startup-id polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id system76-power profile battery
 exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/astronaut-nord.png && systemctl suspend"
 
@@ -59,7 +59,7 @@ bindsym F5 exec --no-startup-id brightnessctl s +10
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym F12 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym F9 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -218,12 +218,12 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	status_command i3status
-	colors {
-        statusline #D8DEE9
-	}
-}
+#bar {
+#	status_command i3status
+#	colors {
+#        statusline #D8DEE9
+#	}
+#}
 floating_minimum_size 450 x 450
 floating_maximum_size 1500 x 1500
 for_window [class="^.*"] border pixel 2
