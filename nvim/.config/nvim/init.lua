@@ -128,6 +128,8 @@ config.setup({
 vim.cmd('set undofile')
 vim.cmd('set termguicolors')
 
+vim.keymap.set('n', '<leader>h', '<cmd>noh<CR>')
+
 local cmp = require'cmp'
 local luasnip = require'luasnip'
 
