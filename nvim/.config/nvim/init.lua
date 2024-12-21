@@ -22,18 +22,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
 
-	{
-    'goolord/alpha-nvim',
-    dependencies = { 'echasnovski/mini.icons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-    end
-};
+		{
+			"goolord/alpha-nvim",
+			dependencies = { "echasnovski/mini.icons" },
+			config = function()
+				require("alpha").setup(require("alpha.themes.startify").config)
+			end,
+		},
 		{
 			"nvim-telescope/telescope.nvim",
 			tag = "0.1.8",
@@ -56,7 +55,7 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim",
 			config = function()
 				require("mason-lspconfig").setup({
-					ensure_installed = { "lua_ls", "gopls" },
+					ensure_installed = { "lua_ls", "gopls", "rust_analyzer" },
 				})
 			end,
 		},
@@ -67,21 +66,26 @@ require("lazy").setup({
 
 				lspconfig.lua_ls.setup({})
 				lspconfig.gopls.setup({})
+				lspconfig.rust_analyzer.setup({
+					settings = {
+						["rust-analyzer"] = {},
+					},
+				})
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap = true})
+				vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", { noremap = true })
 
 				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			end,
 		},
 
-		{ 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'L3MON4D3/LuaSnip' },
+		{ "hrsh7th/nvim-cmp" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-path" },
+		{ "saadparwaiz1/cmp_luasnip" },
+		{ "L3MON4D3/LuaSnip" },
 		{
 			"nvimtools/none-ls.nvim",
 			config = function()
@@ -99,12 +103,12 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap
 			end,
 		},
 		{
-			'windwp/nvim-autopairs'
+			"windwp/nvim-autopairs",
 		},
 
-		{ 'mbbill/undotree' },
+		{ "mbbill/undotree" },
 
-		{'norcalli/nvim-colorizer.lua'}
+		{ "norcalli/nvim-colorizer.lua" },
 	},
 })
 
@@ -114,7 +118,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 local config = require("nvim-treesitter.configs")
 
@@ -124,45 +128,44 @@ config.setup({
 	indent = { enable = true },
 })
 
+vim.cmd("set undofile")
+vim.cmd("set termguicolors")
 
-vim.cmd('set undofile')
-vim.cmd('set termguicolors')
+vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>")
 
-vim.keymap.set('n', '<leader>h', '<cmd>noh<CR>')
-
-local cmp = require'cmp'
-local luasnip = require'luasnip'
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 cmp.setup({
-    -- General configuration
-    completion = {
-        autocomplete = { cmp.TriggerEvent.TextChanged, cmp.TriggerEvent.InsertEnter },
-    },
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)  -- Expanding snippets using LuaSnip
-        end,
-    },
-    mapping = {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
-        { name = 'nvim_lsp' },    -- LSP completion
-        { name = 'buffer' },      -- Buffer completion
-        { name = 'path' },        -- Path completion
-        { name = 'luasnip' },     -- LuaSnip for snippets
-    },
-    experimental = {
-        native_menu = false,
-        ghost_text = true,  -- Enable ghost text for better UI feedback
-    },
+	-- General configuration
+	completion = {
+		autocomplete = { cmp.TriggerEvent.TextChanged, cmp.TriggerEvent.InsertEnter },
+	},
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body) -- Expanding snippets using LuaSnip
+		end,
+	},
+	mapping = {
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-u>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+	},
+	sources = {
+		{ name = "nvim_lsp" }, -- LSP completion
+		{ name = "buffer" }, -- Buffer completion
+		{ name = "path" }, -- Path completion
+		{ name = "luasnip" }, -- LuaSnip for snippets
+	},
+	experimental = {
+		native_menu = false,
+		ghost_text = true, -- Enable ghost text for better UI feedback
+	},
 })
 
-require'colorizer'.setup()
-require('nvim-autopairs').setup{}
+require("colorizer").setup()
+require("nvim-autopairs").setup({})
