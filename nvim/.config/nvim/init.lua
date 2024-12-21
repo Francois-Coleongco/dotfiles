@@ -82,6 +82,8 @@ require("lazy").setup({
 			end,
 		},
 
+		{'rust-lang/rust.vim'},
+
 		{ "hrsh7th/nvim-cmp" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-buffer" },
