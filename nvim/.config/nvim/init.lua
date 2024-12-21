@@ -26,6 +26,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 
+		{'ThePrimeagen/vim-be-good'},
+
 		{
 			"goolord/alpha-nvim",
 			dependencies = { "echasnovski/mini.icons" },
