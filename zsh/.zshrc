@@ -120,6 +120,7 @@ export PATH="$PATH:$HOME/.local/kitty.app/bin"
 
 alias vim="nvim"
 alias x="exit"
+alias c="clear"
 alias gt="git"
 alias icat="kitten icat"
 

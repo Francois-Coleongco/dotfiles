@@ -26,13 +26,13 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-qzm1or.jpg
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-4g88qq.png
 
 exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
 
 exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id system76-power profile battery
-exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/nord_minimal_cat.png && systemctl suspend"
+exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/astronaut.jpg && systemctl suspend"
 
 exec_always --no-startup-id autotiling
 # exec --no-startup-id picom
@@ -49,7 +49,7 @@ exec --no-startup-id nm-applet
 
 # locking
 
-bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/nord_minimal_cat.png && systemctl suspend
+bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/astronaut.jpg && systemctl suspend
 # adjust brightness
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
@@ -86,7 +86,7 @@ bindsym $mod+m exec --no-startup-id kitty --detach sh -c "cd /home/hitori/Music 
 bindsym Print exec --no-startup-id flameshot gui
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Monospace-14' -b
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Monospace-22' -b
 # NOTE the font here must be two larger than the global font up there so when dmenu runs it covers just enough of the status bar
 
 # A more modern dmenu replacement is rofi:
