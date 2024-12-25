@@ -3,6 +3,7 @@ vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 20
 vim.opt.tabstop = 4           -- insert 2 spaces for a tab
+vim.opt.number = true
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.wrap = true           -- wrap lines
 -- Bootstrap lazy.nvim
@@ -74,6 +75,8 @@ require("lazy").setup({
 						["rust-analyzer"] = {},
 					},
 				})
+				lspconfig.clangd.setup({})
+				lspconfig.pyright.setup({})
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

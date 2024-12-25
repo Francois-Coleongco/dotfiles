@@ -107,8 +107,7 @@ source $ZSH/oh-my-zsh.sh
 # languages
 
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/soy/.nvm/versions/node/v20.18.0/bin
-
+export PATH=$PATH:/home/hitori/.nvm/versions/node/v22.11.0/bin
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"

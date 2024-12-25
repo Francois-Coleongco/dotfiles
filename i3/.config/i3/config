@@ -32,9 +32,9 @@ exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 
 
 exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id system76-power profile battery
-exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/dotfiles/added_bgs/astronaut.jpg && systemctl suspend"
 
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id bat_stat
 # exec --no-startup-id picom
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
