@@ -1,0 +1,14 @@
+#!/bin/bash
+
+bat_perc=$(echo $(acpi -b) | grep -oP '\d+(?=%)')
+
+crit_perc=25
+
+while true; do
+
+	if [ "$bat_perc" -le "$crit_perc" ]; then
+		notify-send "Low battery: $bat_perc%"
+	fi
+	
+	sleep 60
+done

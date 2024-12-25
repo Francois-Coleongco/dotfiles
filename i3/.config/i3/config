@@ -26,7 +26,7 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-4g88qq.png
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallpaper.jpg
 
 exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
 
@@ -224,13 +224,14 @@ bindsym $mod+r mode "resize"
 #        statusline #D8DEE9
 #	}
 #}
-floating_minimum_size 450 x 450
+floating_minimum_size 1600 x 800
 floating_maximum_size 1500 x 1500
+
 for_window [class="^.*"] border pixel 2
 # class                 border  backgr. text    indicator child_border
-client.focused          #000000 #000000 #ffffff #a7d750   #9ad234
-client.focused_inactive #333333 #5f676a #ffffff #144b1b   #144b1b
-client.unfocused        #144b1b   #144b1b #888888 #144b1b   #144b1b
+client.focused          #000000 #000000 #ffffff #d87dff   #d87dff
+client.focused_inactive #333333 #5f676a #ffffff #41075a #8910bd
+client.unfocused        #41075a #41075a #888888 #8910bd   #8910bd
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
