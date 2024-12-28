@@ -7,8 +7,8 @@
 default_border pixel 10
 
 # Set rounded corners for all windows
-gaps inner 2
-gaps outer 2
+gaps inner 8
+gaps outer 8
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -26,7 +26,7 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallpaper.png
 
 exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
 
@@ -34,8 +34,11 @@ exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/pol
 exec --no-startup-id system76-power profile battery
 
 exec_always --no-startup-id autotiling
-exec_always --no-startup-id bat_stat
-# exec --no-startup-id picom
+exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
+exec_always --no-startup-id killall bat_stat && bat_stat
+exec --no-startup-id picom --corner-radius 20
+exec --no-startup-id xborders --border-radius 20
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -49,7 +52,7 @@ exec --no-startup-id nm-applet
 
 # locking
 
-bindsym $super+l exec --no-startup-id i3lock -i ~/dotfiles/added_bgs/astronaut.jpg && systemctl suspend
+bindsym $super+l exec --no-startup-id systemctl suspend && betterlockscreen -l
 # adjust brightness
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
@@ -227,7 +230,7 @@ bindsym $mod+r mode "resize"
 floating_minimum_size 1600 x 800
 floating_maximum_size 1500 x 1500
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 # class                 border  backgr. text    indicator child_border
 client.focused          #000000 #000000 #ffffff #d87dff   #d87dff
 client.focused_inactive #333333 #5f676a #ffffff #41075a #8910bd
