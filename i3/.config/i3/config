@@ -58,7 +58,7 @@ bindsym $super+l exec --no-startup-id systemctl suspend && betterlockscreen -l
 bindsym F4 exec --no-startup-id brightnessctl s 10-
 bindsym F5 exec --no-startup-id brightnessctl s +10
 
-bindsym F10 exec --no-startup-id xrandr --output eDP-1 --gamma 1.0:0.8:0.7
+bindsym F10 exec --no-startup-id nightlight_toggle
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
