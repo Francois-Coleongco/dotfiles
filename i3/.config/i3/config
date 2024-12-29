@@ -26,9 +26,9 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallpaper.png
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-wedd57.png
 
-exec --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00
+exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
 
 exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id system76-power profile battery
@@ -57,6 +57,8 @@ bindsym $super+l exec --no-startup-id systemctl suspend && betterlockscreen -l
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
 bindsym F5 exec --no-startup-id brightnessctl s +10
+
+bindsym F10 exec --no-startup-id xrandr --output eDP-1 --gamma 1.0:0.8:0.7
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

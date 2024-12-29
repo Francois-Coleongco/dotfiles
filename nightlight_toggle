@@ -1,0 +1,11 @@
+#!/bin/bash
+
+CURRENT_GAMMA=$(xrandr --verbose | grep Gamma | awk '{print $2}')
+
+
+if [[ "$CURRENT_GAMMA" != "1.0:1.0:1.0" ]]; then
+    xrandr --output eDP-1 --gamma 1.0:1.0:1.0
+else
+    xrandr --output eDP-1 --gamma 1.0:0.8:0.7
+fi
+
