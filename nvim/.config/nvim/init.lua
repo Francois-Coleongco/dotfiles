@@ -83,6 +83,7 @@ require("lazy").setup({
 				lspconfig.pyright.setup({})
 				lspconfig.jdtls.setup({})
 				lspconfig.ts_ls.setup({})
+				lspconfig.tailwindcss.setup({})
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

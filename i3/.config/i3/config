@@ -37,7 +37,8 @@ exec_always --no-startup-id killall autotiling; autotiling
 exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
 exec_always --no-startup-id killall bat_stat; bat_stat -n
 exec_always --no-startup-id killall picom; picom --corner-radius 20
-exec_always --no-startup-id brightnessctl set 40%
+# NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
+exec_always --no-startup-id brightnessctl set 40% 
 exec_always --no-startup-id killall xborder; xborders --border-radius 22
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
