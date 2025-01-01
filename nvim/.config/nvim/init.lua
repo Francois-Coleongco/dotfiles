@@ -32,6 +32,7 @@ require("lazy").setup({
 
 		{'ThePrimeagen/vim-be-good'},
 		{"NStefan002/screenkey.nvim"},
+		{'andweeb/presence.nvim'},
 
 		{
 			"goolord/alpha-nvim",
@@ -80,6 +81,8 @@ require("lazy").setup({
 				})
 				lspconfig.clangd.setup({})
 				lspconfig.pyright.setup({})
+				lspconfig.jdtls.setup({})
+				lspconfig.ts_ls.setup({})
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
