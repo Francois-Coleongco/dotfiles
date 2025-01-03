@@ -5,10 +5,10 @@ vim.g.mapleader = " "
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 20
-vim.opt.tabstop = 4           -- insert 2 spaces for a tab
+vim.opt.tabstop = 4 -- insert 2 spaces for a tab
 vim.opt.number = true
 vim.opt.relativenumber = true -- relative line numbers
-vim.opt.wrap = true           -- wrap lines
+vim.opt.wrap = true -- wrap lines
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -17,7 +17,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
+			{ out, "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -30,9 +30,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 
-		{'ThePrimeagen/vim-be-good'},
-		{"NStefan002/screenkey.nvim"},
-		{'andweeb/presence.nvim'},
+		{ "ThePrimeagen/vim-be-good" },
+		{ "NStefan002/screenkey.nvim" },
+		{ "andweeb/presence.nvim" },
 
 		{
 			"goolord/alpha-nvim",
@@ -72,7 +72,19 @@ require("lazy").setup({
 			config = function()
 				local lspconfig = require("lspconfig")
 
-				lspconfig.lua_ls.setup({})
+				lspconfig.lua_ls.setup({
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								-- Make the server aware of Neovim runtime files
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+						},
+					},
+				})
 				lspconfig.gopls.setup({})
 				lspconfig.rust_analyzer.setup({
 					settings = {
@@ -93,7 +105,7 @@ require("lazy").setup({
 			end,
 		},
 
-		{'rust-lang/rust.vim'},
+		{ "rust-lang/rust.vim" },
 
 		{ "hrsh7th/nvim-cmp" },
 		{ "hrsh7th/cmp-nvim-lsp" },
@@ -111,6 +123,7 @@ require("lazy").setup({
 						null_ls.builtins.formatting.stylua,
 						null_ls.builtins.formatting.prettier,
 						null_ls.builtins.formatting.gofumpt,
+						null_ls.builtins.formatting.prettier,
 						null_ls.builtins.diagnostics.golangci_lint,
 					},
 				})
@@ -134,6 +147,10 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" 
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
+vim.api.nvim_set_keymap('n', ';', '$', { noremap = true, silent = true })
+vim.api.nvim_del_keymap('n', '$')
+
 
 local config = require("nvim-treesitter.configs")
 
