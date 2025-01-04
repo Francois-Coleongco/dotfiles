@@ -20,7 +20,7 @@
 
 [window]
 
-opacity = 0.9
+opacity = 1.0
 
 padding.x = 10
 padding.y = 10
@@ -32,3 +32,7 @@ decorations_theme_variant = "Light" # "Dark"
 bindings = [
    { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" }
 ]
+
+[font]
+
+size = 16.0

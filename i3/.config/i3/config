@@ -76,7 +76,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec /home/hitori/.local/kitty.app/bin/kitty
+bindsym $mod+Return exec /usr/bin/alacritty
 # kill focused window
 bindsym $mod+Escape kill
 
