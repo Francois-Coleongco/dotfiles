@@ -38,7 +38,7 @@ exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
 exec_always --no-startup-id killall bat_stat; bat_stat -n
 exec_always --no-startup-id killall picom; picom --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
-exec_always --no-startup-id brightnessctl set 40% 
+exec_always --no-startup-id brightnessctl set 25% 
 exec_always --no-startup-id killall xborder; xborders --border-radius 22
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -82,13 +82,13 @@ bindsym $mod+Escape kill
 
 # user added
 
-bindsym $mod+f exec --no-startup-id kitty --detach --hold -e fzf
+bindsym $mod+f exec --no-startup-id alacritty -e --hold -e fzf
 
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
-bindsym $mod+o exec --no-startup-id kitty --detach ttyfio
+bindsym $mod+o exec --no-startup-id alacritty -e ttyfio
 
-bindsym $mod+m exec --no-startup-id kitty --detach sh -c "cd /home/hitori/Music && cmus"
+bindsym $mod+m exec --no-startup-id alacritty -e sh -c "cd /home/hitori/Music && cmus"
 
 bindsym Print exec --no-startup-id flameshot gui
 

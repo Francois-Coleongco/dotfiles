@@ -35,4 +35,5 @@ bindings = [
 
 [font]
 
+normal = { family = "MartianMono NFM", style = "Regular"}
 size = 16.0
