@@ -162,6 +162,7 @@ config.setup({
 
 vim.cmd("set undofile")
 vim.cmd("set termguicolors")
+vim.cmd("colorscheme quiet")
 
 vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>")
 

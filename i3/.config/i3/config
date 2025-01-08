@@ -26,11 +26,11 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-9d11xk.png
 
 exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
 
-exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
+exec_always --no-startup-id killall polybar; ~/.config/polybar/launch.sh --shapes
 exec --no-startup-id system76-power profile battery
 
 exec_always --no-startup-id killall autotiling; autotiling
@@ -38,7 +38,7 @@ exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
 exec_always --no-startup-id killall bat_stat; bat_stat -n
 exec_always --no-startup-id killall picom; picom --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
-exec_always --no-startup-id brightnessctl set 25% 
+exec_always --no-startup-id brightnessctl set 40 
 exec_always --no-startup-id killall xborder; xborders --border-radius 22
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
