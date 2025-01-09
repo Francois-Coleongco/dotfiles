@@ -153,3 +153,4 @@ alias br="pomodoro 'break'"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/spring-3.4.1/bin:$PATH"

@@ -67,6 +67,53 @@ require("lazy").setup({
 				})
 			end,
 		},
+
+		{
+			"nvim-java/nvim-java",
+			config = false,
+			dependencies = {
+				{
+					"neovim/nvim-lspconfig",
+					opts = {
+						servers = {
+							-- Your JDTLS configuration goes here
+							jdtls = {
+								-- settings = {
+								--   java = {
+								--     configuration = {
+								--       runtimes = {
+								--         {
+								--           name = "JavaSE-23",
+								--           path = "/usr/local/sdkman/candidates/java/23-tem",
+								--         },
+								--       },
+								--     },
+								--   },
+								-- },
+							},
+						},
+						setup = {
+							jdtls = function()
+								-- Your nvim-java configuration goes here
+								require("java").setup({
+									-- root_markers = {
+									--   "settings.gradle",
+									--   "settings.gradle.kts",
+									--   "pom.xml",
+									--   "build.gradle",
+									--   "mvnw",
+									--   "gradlew",
+									--   "build.gradle",
+									--   "build.gradle.kts",
+									-- },
+								})
+							end,
+						},
+					},
+				},
+			},
+		},
+
 		{
 			"neovim/nvim-lspconfig",
 			config = function()
@@ -148,9 +195,8 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
-vim.api.nvim_set_keymap('n', ';', '$', { noremap = true, silent = true })
-vim.api.nvim_del_keymap('n', '$')
-
+vim.api.nvim_set_keymap("n", ";", "$", { noremap = true, silent = true })
+vim.api.nvim_del_keymap("n", "$")
 
 local config = require("nvim-treesitter.configs")
 
@@ -162,7 +208,7 @@ config.setup({
 
 vim.cmd("set undofile")
 vim.cmd("set termguicolors")
-vim.cmd("colorscheme quiet")
+vim.cmd("colorscheme default")
 
 vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>")
 

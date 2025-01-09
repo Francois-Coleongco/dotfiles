@@ -26,11 +26,11 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-9d11xk.png
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/cute_astronaut.jpg
 
 exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
 
-exec_always --no-startup-id killall polybar; ~/.config/polybar/launch.sh --shapes
+# exec_always --no-startup-id killall polybar; ~/.config/polybar/launch.sh --shapes
 exec --no-startup-id system76-power profile battery
 
 exec_always --no-startup-id killall autotiling; autotiling
@@ -76,19 +76,19 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/alacritty
+bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+Escape kill
 
 # user added
 
-bindsym $mod+f exec --no-startup-id alacritty -e --hold -e fzf
+bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
-bindsym $mod+o exec --no-startup-id alacritty -e ttyfio
+bindsym $mod+o exec --no-startup-id kitty -e ttyfio
 
-bindsym $mod+m exec --no-startup-id alacritty -e sh -c "cd /home/hitori/Music && cmus"
+bindsym $mod+m exec --no-startup-id kitty -e sh -c "cd /home/hitori/Music && cmus"
 
 bindsym Print exec --no-startup-id flameshot gui
 
@@ -225,12 +225,12 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#	status_command i3status
-#	colors {
-#        statusline #D8DEE9
-#	}
-#}
+bar {
+	status_command i3status
+	colors {
+        statusline #D8DEE9
+	}
+}
 floating_minimum_size 1600 x 800
 floating_maximum_size 1500 x 1500
 
