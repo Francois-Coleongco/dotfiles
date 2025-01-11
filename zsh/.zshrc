@@ -146,6 +146,7 @@ pomodoro () {
 
 alias wo="pomodoro 'work'"
 alias br="pomodoro 'break'"
+alias pepe="~/pepe"
 
 # bun completions
 [ -s "/home/hitori/.bun/_bun" ] && source "/home/hitori/.bun/_bun"
@@ -154,3 +155,4 @@ alias br="pomodoro 'break'"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/spring-3.4.1/bin:$PATH"
+
