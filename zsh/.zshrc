@@ -146,7 +146,7 @@ pomodoro () {
 
 alias wo="pomodoro 'work'"
 alias br="pomodoro 'break'"
-alias pepe="~/pepe"
+alias pee="~/pepe"
 
 # bun completions
 [ -s "/home/hitori/.bun/_bun" ] && source "/home/hitori/.bun/_bun"

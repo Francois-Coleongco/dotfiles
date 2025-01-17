@@ -26,11 +26,12 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-rrjvyq.png
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/added_bgs/wallhaven-9d11xk.png
+
 
 exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
 
-exec_always --no-startup-id killall polybar; ~/.config/polybar/launch.sh --shapes
+# exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id system76-power profile battery
 
 exec_always --no-startup-id killall autotiling; autotiling
@@ -52,10 +53,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --noeork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# locking
+
+bindsym $super+Shift+s exec --no-startup-id systemctl poweroff
 
 bindsym $super+l exec --no-startup-id systemctl suspend && betterlockscreen -l
-# adjust brightness
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
 bindsym F5 exec --no-startup-id brightnessctl s +10
@@ -85,10 +86,6 @@ bindsym $mod+Escape kill
 bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
 bindsym $mod+p exec --no-startup-id firefox --private-window
-
-bindsym $mod+t exec --no-startup-id thunar
-
-bindsym $mod+o exec --no-startup-id kitty -e ttyfio
 
 bindsym $mod+m exec --no-startup-id kitty -e sh -c "cd /home/hitori/Music && cmus"
 
@@ -196,7 +193,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -229,6 +226,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 floating_minimum_size 1600 x 800
 floating_maximum_size 1500 x 1500
+
+bar {
+        status_command i3status
+}
 
 for_window [class="^.*"] border pixel 0
 # class                 border  backgr. text    indicator child_border
