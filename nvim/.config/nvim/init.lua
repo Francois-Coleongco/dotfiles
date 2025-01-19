@@ -2,10 +2,10 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 vim.g.mapleader = " "
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 20
-vim.opt.tabstop = 4 -- insert 2 spaces for a tab
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.number = true
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.wrap = true -- wrap lines
@@ -36,9 +36,8 @@ require("lazy").setup({
 
 		{
 			"goolord/alpha-nvim",
-			dependencies = { "echasnovski/mini.icons" },
 			config = function()
-				require("alpha").setup(require("alpha.themes.startify").config)
+				require("alpha").setup(require("alpha.themes.dashboard").config)
 			end,
 		},
 		{
@@ -68,6 +67,8 @@ require("lazy").setup({
 			end,
 		},
 
+		{ "nvim-java/nvim-java" },
+
 		{
 			"neovim/nvim-lspconfig",
 			config = function()
@@ -94,6 +95,7 @@ require("lazy").setup({
 				})
 				lspconfig.clangd.setup({})
 				lspconfig.pyright.setup({})
+				require('java').setup()
 				lspconfig.jdtls.setup({})
 				lspconfig.ts_ls.setup({})
 				lspconfig.tailwindcss.setup({})
@@ -145,6 +147,15 @@ require("lazy").setup({
 		{ "mbbill/undotree" },
 
 		{ "norcalli/nvim-colorizer.lua" },
+		{
+			"folke/todo-comments.nvim",
+			dependencies = { "nvim-lua/plenary.nvim" },
+			opts = {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			},
+		},
 	},
 })
 
