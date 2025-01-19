@@ -9,6 +9,15 @@ vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.number = true
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.wrap = true -- wrap lines
+
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "rounded"  -- You can also use "single", "double", etc.
+  }
+)
+
+-- This handler is responsible for showing the hover window with borders
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -62,7 +71,7 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim",
 			config = function()
 				require("mason-lspconfig").setup({
-					ensure_installed = { "lua_ls", "gopls", "rust_analyzer" },
+					ensure_installed = { "lua_ls", "gopls", "rust_analyzer", "jdtls" },
 				})
 			end,
 		},
@@ -95,7 +104,6 @@ require("lazy").setup({
 				})
 				lspconfig.clangd.setup({})
 				lspconfig.pyright.setup({})
-				require('java').setup()
 				lspconfig.jdtls.setup({})
 				lspconfig.ts_ls.setup({})
 				lspconfig.tailwindcss.setup({})
