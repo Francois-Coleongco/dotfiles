@@ -5,16 +5,16 @@ vim.g.mapleader = " "
 vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 20
-vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.tabstop = 2           -- insert 2 spaces for a tab
 vim.opt.number = true
 vim.opt.relativenumber = true -- relative line numbers
-vim.opt.wrap = true -- wrap lines
+vim.opt.wrap = true           -- wrap lines
 
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded"  -- You can also use "single", "double", etc.
-  }
+	vim.lsp.handlers.hover, {
+		border = "rounded" -- You can also use "single", "double", etc.
+	}
 )
 
 -- This handler is responsible for showing the hover window with borders
@@ -26,7 +26,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
+			{ out,                            "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -43,6 +43,12 @@ require("lazy").setup({
 		{ "NStefan002/screenkey.nvim" },
 		{ "andweeb/presence.nvim" },
 
+		{
+			"MaximilianLloyd/ascii.nvim",
+			requires = {
+				"MunifTanjim/nui.nvim"
+			}
+		},
 		{
 			"goolord/alpha-nvim",
 			config = function()
@@ -216,7 +222,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" }, -- LSP completion
 		{ name = "buffer" }, -- Buffer completion
-		{ name = "path" }, -- Path completion
+		{ name = "path" },   -- Path completion
 		{ name = "luasnip" }, -- LuaSnip for snippets
 	},
 	experimental = {
@@ -233,8 +239,8 @@ local Rule = require("nvim-autopairs.rule")
 require("nvim-ts-autotag").setup({
 	opts = {
 		-- Defaults
-		enable_close = true, -- Auto close tags
-		enable_rename = true, -- Auto rename pairs of tags
+		enable_close = true,         -- Auto close tags
+		enable_rename = true,        -- Auto rename pairs of tags
 		enable_close_on_slash = false, -- Auto close on trailing </
 	},
 	-- Also override individual filetype configs, these take priority.

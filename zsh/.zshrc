@@ -146,7 +146,6 @@ pomodoro () {
 
 alias wo="pomodoro 'work'"
 alias br="pomodoro 'break'"
-alias pee="~/pepe"
 
 # bun completions
 [ -s "/home/hitori/.bun/_bun" ] && source "/home/hitori/.bun/_bun"
@@ -156,3 +155,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/spring-3.4.1/bin:$PATH"
 
+export PATH="$HOME/totally_useless_things:$PATH"
+export PATH="$HOME/dotfiles/wrappers:$PATH"
+
+
+alias themes="ls ~/.config/alacritty/themes/themes | fzf | xargs -I {} ln -sf ~/.config/alacritty/themes/themes/{} ~/.config/alacritt
+y/current_theme.toml && echo "@@@" >> ~/.config/alacritty/alacritty.yml && sed -i '/@@@/d' ~/.config/alacritty/alacritty.yml"
