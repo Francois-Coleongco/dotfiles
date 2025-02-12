@@ -1,6 +1,18 @@
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
+
+-- Run :Screenkey toggle on startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  command = "Screenkey toggle",  -- This will run the :Screenkey toggle command
+})
+
 vim.g.mapleader = " "
 vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
@@ -49,12 +61,12 @@ require("lazy").setup({
 				"MunifTanjim/nui.nvim"
 			}
 		},
-		{
-			"goolord/alpha-nvim",
-			config = function()
-				require("alpha").setup(require("alpha.themes.dashboard").config)
-			end,
-		},
+		--{
+		--	"goolord/alpha-nvim",
+		--	config = function()
+		--		require("alpha").setup(require("alpha.themes.dashboard").config)
+		--	end,
+		--},
 		{
 			"nvim-telescope/telescope.nvim",
 			tag = "0.1.8",
@@ -117,6 +129,7 @@ require("lazy").setup({
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", { noremap = true })
+				vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
 
 				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			end,
@@ -251,6 +264,70 @@ require("nvim-ts-autotag").setup({
 			enable_close = false,
 		},
 	},
+})
+
+require("screenkey").setup({
+    win_opts = {
+        row = vim.o.lines - vim.o.cmdheight - 1,
+        col = vim.o.columns - 1,
+        relative = "editor",
+        anchor = "SE",
+        width = 40,
+        height = 3,
+        border = "single",
+        title = "",
+        title_pos = "center",
+        style = "minimal",
+        focusable = false,
+        noautocmd = true,
+    },
+    compress_after = 3,
+    clear_after = 3,
+    disable = {
+        filetypes = {},
+        buftypes = {},
+        events = false,
+    },
+    show_leader = true,
+    group_mappings = false,
+    display_infront = {},
+    display_behind = {},
+    filter = function(keys)
+        return keys
+    end,
+    keys = {
+        ["<TAB>"] = "󰌒",
+        ["<CR>"] = "󰌑",
+        ["<ESC>"] = "Esc",
+        ["<SPACE>"] = "␣",
+        ["<BS>"] = "󰌥",
+        ["<DEL>"] = "Del",
+        ["<LEFT>"] = "",
+        ["<RIGHT>"] = "",
+        ["<UP>"] = "",
+        ["<DOWN>"] = "",
+        ["<HOME>"] = "Home",
+        ["<END>"] = "End",
+        ["<PAGEUP>"] = "PgUp",
+        ["<PAGEDOWN>"] = "PgDn",
+        ["<INSERT>"] = "Ins",
+        ["<F1>"] = "󱊫",
+        ["<F2>"] = "󱊬",
+        ["<F3>"] = "󱊭",
+        ["<F4>"] = "󱊮",
+        ["<F5>"] = "󱊯",
+        ["<F6>"] = "󱊰",
+        ["<F7>"] = "󱊱",
+        ["<F8>"] = "󱊲",
+        ["<F9>"] = "󱊳",
+        ["<F10>"] = "󱊴",
+        ["<F11>"] = "󱊵",
+        ["<F12>"] = "󱊶",
+        ["CTRL"] = "Ctrl",
+        ["ALT"] = "Alt",
+        ["SUPER"] = "󰘳",
+        ["<leader>"] = "<leader>",
+    },
 })
 
 npairs.add_rule(Rule("/*", "*/"))

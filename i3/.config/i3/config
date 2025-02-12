@@ -17,7 +17,7 @@ set $mod Mod1
 set $super Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:BlexMono Nerd Font 10
+font pango:CaskaydiaCove NFM 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -26,22 +26,22 @@ font pango:BlexMono Nerd Font 10
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always --no-startup-id feh --bg-fill $(cat ~/dotfiles/added_bgs/curr_bg)
+exec_always --no-startup-id feh --bg-fill "$(cat ~/dotfiles/added_bgs/curr_bg)"
 
 
 exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
 
-exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
+# exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
 exec --no-startup-id system76-power profile battery
 
 exec_always --no-startup-id killall autotiling; autotiling
 exec --no-startup-id xautolock -time 11 -locker "betterlockscreen -l"
 exec_always --no-startup-id killall bat_stat; bat_stat -n
-exec_always --no-startup-id killall picom; picom
+# exec_always --no-startup-id killall picom; picom --corner-radius 20
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
 exec_always --no-startup-id brightnessctl set 100
-# exec_always --no-startup-id killall xborder; xborders --border-radius 22
+# exec_always --no-startup-id killall xborders; xborders --border-radius 22
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -78,7 +78,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Escape kill
 
@@ -95,7 +95,8 @@ bindsym $mod+m exec --no-startup-id alacritty -e sh -c "cd /home/hitori/Music &&
 bindsym Print exec --no-startup-id flameshot gui
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-4/launcher.sh -font "artianMono NFM 24"
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-4/launcher.sh
+
 # NOTE the font here must be two larger than the global font up there so when dmenu runs it covers just enough of the status bar
 
 # A more modern dmenu replacement is rofi:
@@ -230,11 +231,14 @@ bindsym $mod+r mode "resize"
 floating_minimum_size 1600 x 800
 floating_maximum_size 1500 x 1500
 
-#bar {
-#        status_command i3status
-#}
+bar {
+        status_command i3status
+				tray_output primary
+}
 
 for_window [class="^.*"] border pixel 1
+#1 
+
 # class                 border  backgr. text    indicator child_border
 client.focused          #000000 #000000 #ffffff #d87dff   #d87dff
 client.focused_inactive #333333 #5f676a #ffffff #41075a #8910bd
