@@ -61,12 +61,12 @@ require("lazy").setup({
 				"MunifTanjim/nui.nvim"
 			}
 		},
-		--{
-		--	"goolord/alpha-nvim",
-		--	config = function()
-		--		require("alpha").setup(require("alpha.themes.dashboard").config)
-		--	end,
-		--},
+		{
+			"goolord/alpha-nvim",
+			config = function()
+				require("alpha").setup(require("alpha.themes.dashboard").config)
+			end,
+		},
 		{
 			"nvim-telescope/telescope.nvim",
 			tag = "0.1.8",

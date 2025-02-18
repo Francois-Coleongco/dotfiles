@@ -107,21 +107,18 @@ source $ZSH/oh-my-zsh.sh
 # languages
 
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/hitori/.nvm/versions/node/v22.11.0/bin
+export PATH=$PATH:$HOME/.nvm/versions/node/v22.14.0/bin
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/go/bin"
 
-export PATH="$PATH:$HOME/.local/kitty.app/bin"
-# eval "$(starship init zsh)"
-
 alias vim="nvim"
 alias x="exit"
 alias c="clear"
 alias gt="git"
-alias icat="kitten icat"
+
 
 moosic () {
     link=$1
@@ -131,33 +128,13 @@ moosic () {
 }
 
 
-declare -A pomo_options
-pomo_options["work"]="45"
-pomo_options["break"]="15"
-
-pomodoro () {
-  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
-  val=$1
-  echo $val | lolcat
-  timer ${pomo_options["$val"]}m
-  spd-say "'$val' session done"
-  fi
-}
-
-alias wo="pomodoro 'work'"
-alias br="pomodoro 'break'"
-
 # bun completions
-[ -s "/home/hitori/.bun/_bun" ] && source "/home/hitori/.bun/_bun"
+#[ -s "/home/hitori/.bun/_bun" ] && source "/home/hitori/.bun/_bun"
+#
+## bun
+#export BUN_INSTALL="$HOME/.bun"
+#export PATH="$BUN_INSTALL/bin:$PATH"
+#export PATH="$HOME/spring-3.4.1/bin:$PATH"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/spring-3.4.1/bin:$PATH"
-
-export PATH="$HOME/totally_useless_things:$PATH"
-export PATH="$HOME/dotfiles/wrappers:$PATH"
-
-
-alias themes="ls ~/.config/alacritty/themes/themes | fzf | xargs -I {} ln -sf ~/.config/alacritty/themes/themes/{} ~/.config/alacritt
-y/current_theme.toml && echo "@@@" >> ~/.config/alacritty/alacritty.yml && sed -i '/@@@/d' ~/.config/alacritty/alacritty.yml"
+export PATH="$PATH:$HOME/utils"
+export PATH="$PATH:$HOME/utils/clangd_19.1.2/bin"

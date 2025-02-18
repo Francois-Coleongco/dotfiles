@@ -1,11 +1,9 @@
-import = [
-  "/home/hitori/.npm/_npx/808b709e6234a442/node_modules/alacritty-themes/themes/Kitty.toml"
-]
 
 [window]
-opacity = 0.94
+opacity = 1
 decorations = "Full"
 decorations_theme_variant = "Light"
+dimensions = { columns = 80, lines = 80 }
 
   [window.padding]
   x = 10
@@ -17,8 +15,13 @@ mods = "Control|Shift"
 action = "SpawnNewInstance"
 
 [font]
-size = 10
+size = 14
 
   [font.normal]
-  family = "MartianMono NFM"
+  family = "Ubuntu Mono"
   style = "Regular"
+
+[general]
+import = [
+  "/home/hitori/.npm/_npx/808b709e6234a442/node_modules/alacritty-themes/themes/Kitty.toml"
+]
