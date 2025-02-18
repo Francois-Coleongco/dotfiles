@@ -1,0 +1,4 @@
+#!/bin/bash
+# NOTE YOU SHOULD PUT THIS IN THE /usr/bin/ then call this from the discord.desktop file in /usr/share/applications/
+/usr/share/discord/Discord &
+sleep 15 && wmctrl -x -r discord.discord -b add,skip_taskbar
