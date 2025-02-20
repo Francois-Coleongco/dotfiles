@@ -1,18 +1,28 @@
 #!/bin/bash
 
-resp=$(acpi -b)
+bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
 
-bat_perc=$(echo $(acpi -b) | grep -oP '\d+(?=%)')
+bat_perc=$(acpi -b | awk -F'[,%]' '{print $2}' | sed 's/^ *//')
 
-crit_perc=30
+crit_perc=70
+
+echo this is bat_status
+echo ${bat_status}
+
+echo this is bat_perc
+echo ${bat_perc}
+
+echo this is crit_perc
+echo ${crit_perc}
 
 while true; do
 
-        if [ "$bat_perc" -le "$crit_perc" ] && [[ "$resp" == *"Discharging"* ]]; then
+					if [ ${bat_perc} -le "$crit_perc" ] && [[ ${bat_status} == "Discharging" ]]; then
+						echo FUCK
                 notify-send -t 60000 -u critical "Low battery: $bat_perc%
 
 yeaaa you should proooobably charge before it dies. like... right now? charge it. now. CHARGE. CHARGE ME. GIVE ME FOOD YOU FUCKER"
         fi
 
-        sleep 60
+        sleep 20
 done

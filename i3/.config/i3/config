@@ -31,14 +31,14 @@ exec_always --no-startup-id feh --bg-fill "$(cat ~/dotfiles/added_bgs/curr_bg)"
 
 exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
 
-# exec_always --no-startup-id killall polybar; polybar mine --config=~/.config/polybar/config.ini
+exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
 exec_always --no-startup-id killall autotiling; autotiling
 exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
-exec_always --no-startup-id killall bat_stat; bat_stat -n
+exec --no-startup-id bat_stat
 # exec_always --no-startup-id killall ~/utils/picom; ~/utils/picom
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
-exec_always --no-startup-id brightnessctl set 80
+exec_always --no-startup-id brightnessctl set 400
 # exec_always --no-startup-id killall xborders; xborders --border-radius 22
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -76,13 +76,16 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec ghostty
 # kill focused window
 bindsym $mod+Escape kill
 
 # user added
 
 exec --no-startup-id ~/startup.sh
+
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome'
+exec --no-startup-id i3-msg 'workspace 2; exec evince'
 
 bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
@@ -231,10 +234,10 @@ bindsym $mod+r mode "resize"
 floating_minimum_size 1600 x 800
 floating_maximum_size 1500 x 1500
 
-bar {
-        status_command i3status
-				tray_output none
-}
+#bar {
+#        status_command i3status
+#				tray_output none
+#}
 
 for_window [class="^.*"] border pixel 1
 #1 

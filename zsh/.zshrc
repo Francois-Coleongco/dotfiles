@@ -123,7 +123,7 @@ alias gt="git"
 moosic () {
     link=$1
     cd ~/Music/
-    yt-dlp "$link"
+    yt-dlp --extract-audio --audio-format mp3 "$link"
 	cd    
 }
 

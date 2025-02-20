@@ -1,8 +1,8 @@
 
 [window]
-opacity = 1
+opacity = 0.95
 decorations = "Full"
-decorations_theme_variant = "Light"
+decorations_theme_variant = "Dark"
 dimensions = { columns = 80, lines = 80 }
 
   [window.padding]
