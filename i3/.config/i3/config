@@ -52,6 +52,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --noeork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+bindsym $super+1 exec --no-startup-id xrandr --output HDMI-1 --auto --mode 1920x1080 --dpi 120 --scale 1.5x1.5 --output eDP-1 --off
+bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --off
 
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
@@ -87,7 +89,7 @@ exec --no-startup-id ~/startup.sh
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome'
 exec --no-startup-id i3-msg 'workspace 2; exec evince'
 
-bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
+# bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
 bindsym $mod+p exec --no-startup-id firefox --private-window
 

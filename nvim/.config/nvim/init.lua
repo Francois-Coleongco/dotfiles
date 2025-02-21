@@ -8,10 +8,10 @@ vim.cmd [[
   highlight NonText ctermbg=none
 ]]
 
--- Run :Screenkey toggle on startup
-vim.api.nvim_create_autocmd("VimEnter", {
-  command = "Screenkey toggle",  -- This will run the :Screenkey toggle command
-})
+---- Run :Screenkey toggle on startup
+--vim.api.nvim_create_autocmd("VimEnter", {
+--  command = "Screenkey toggle",  -- This will run the :Screenkey toggle command
+--})
 
 vim.g.mapleader = " "
 vim.opt.shiftwidth = 2
