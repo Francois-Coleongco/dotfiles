@@ -34,13 +34,13 @@ exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 310
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
 exec_always --no-startup-id killall autotiling; autotiling
 exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
-exec --no-startup-id bat_stat
 # exec_always --no-startup-id killall ~/utils/picom; ~/utils/picom
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
 exec_always --no-startup-id brightnessctl set 400
 # exec_always --no-startup-id killall xborders; xborders --border-radius 22
 
+exec --no-startup-id sleep 30 && bat_stat
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -93,7 +93,7 @@ exec --no-startup-id i3-msg 'workspace 2; exec evince'
 
 bindsym $mod+p exec --no-startup-id firefox --private-window
 
-bindsym $mod+m exec --no-startup-id alacritty -e sh -c "cd /home/hitori/Music && cmus"
+bindsym $mod+m exec --no-startup-id ghostty -e "cd /home/soy/Music && cmus"
 
 bindsym Print exec --no-startup-id flameshot gui
 
