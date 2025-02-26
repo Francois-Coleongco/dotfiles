@@ -1,0 +1,16 @@
+use ventoy to create a bootable usb with windows on it. usb must be formatted with ntfs file system
+
+goal is to install the wireless internet drivers so that windows can automatically download and install the rest of the drivers.
+
+
+# IMPORTANT:
+
+partition the hard disk such that you have enough space for linux and windows. if you are reinstalling windows with an existing linux install, resize the linux partition by using gparted in a linux live usb. the reason you need a live usb is that you can't resize an already mounted drive. 
+
+bios settings to note:
+
+vmd settings. turn it off so ventoy can see the internal drives
+
+turn bootlocker off so you can boot into windows and linux through the grub bootloader
+turn fast boot off
+
