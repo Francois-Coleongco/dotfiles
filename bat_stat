@@ -21,8 +21,9 @@ while true; do
 						echo FUCK
                 notify-send -t 60000 -u critical "Low battery: $bat_perc%
 
-yeaaa you should proooobably charge before it dies. like... right now? charge it. now. CHARGE. CHARGE ME. GIVE ME FOOD YOU FUCKER"
+yeaaa you should proooobably charge before it dies. like... right now? charge it. now. CHARGE. CHARGE ME. GIVE ME FOODDDDD"
         fi
 
+					bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
         sleep 20
 done

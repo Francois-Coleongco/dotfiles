@@ -40,7 +40,7 @@ exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
 exec_always --no-startup-id brightnessctl set 100
 # exec_always --no-startup-id killall xborders; xborders --border-radius 22 # i dunno why the xborders script doesnt work anymroe :/ might try to figure out why but no time atmm
 
-exec --no-startup-id sleep 30 && bat_stat
+exec ~/utils/bat_stat
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
