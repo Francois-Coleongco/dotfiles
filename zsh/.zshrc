@@ -114,10 +114,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/go/bin"
 
-alias vim="nvim"
-alias x="exit"
-alias c="clear"
-alias gt="git"
 
 
 moosic () {
@@ -138,3 +134,12 @@ moosic () {
 
 export PATH="$PATH:$HOME/utils"
 export PATH="$PATH:$HOME/utils/clangd_19.1.2/bin"
+
+export PATH="$PATH:$HOME/.local/kitty.app/bin"
+
+alias icat="kitten icat"
+
+alias vim="nvim"
+alias x="exit"
+alias c="clear"
+alias gt="git"

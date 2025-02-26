@@ -37,8 +37,8 @@ exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
 # exec_always --no-startup-id killall ~/utils/picom; ~/utils/picom
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
-exec_always --no-startup-id brightnessctl set 400
-# exec_always --no-startup-id killall xborders; xborders --border-radius 22
+exec_always --no-startup-id brightnessctl set 100
+# exec_always --no-startup-id killall xborders; xborders --border-radius 22 # i dunno why the xborders script doesnt work anymroe :/ might try to figure out why but no time atmm
 
 exec --no-startup-id sleep 30 && bat_stat
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -86,8 +86,8 @@ bindsym $mod+Escape kill
 
 exec --no-startup-id ~/startup.sh
 
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome'
-exec --no-startup-id i3-msg 'workspace 2; exec evince'
+exec i3-msg 'workspace 1; exec /usr/bin/google-chrome'
+exec i3-msg 'workspace 2; exec evince'
 
 # bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
@@ -245,9 +245,9 @@ for_window [class="^.*"] border pixel 1
 #1 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #000000 #000000 #ffffff #d87dff   #d87dff
-client.focused_inactive #333333 #5f676a #ffffff #41075a #8910bd
-client.unfocused        #41075a #41075a #888888 #8910bd   #8910bd
+client.focused          #000000 #000000 #ffffff #00ff98   #00ff98
+client.focused_inactive #333333 #5f676a #ffffff #2fb8ad #2fb8ad
+client.unfocused        #2fb8ad #2fb8ad #888888 #2fb8ad   #2fb8ad
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
