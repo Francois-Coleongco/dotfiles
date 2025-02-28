@@ -17,7 +17,7 @@ set $mod Mod1
 set $super Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu Mono 16
+font pango:BlexMono Nerd Font 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -27,14 +27,13 @@ font pango:Ubuntu Mono 16
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
 exec_always --no-startup-id feh --bg-fill "$(cat ~/dotfiles/added_bgs/curr_bg)"
-
-
-exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
-
+# exec_always --no-startup-id xrandr --newmode "2880x1800_60.00"  442.00  2880 3104 3416 3952  1800 1803 1809 1865 -hsync +vsync; xrandr --addmode eDP-1 2880x1800_60.00; xrandr --output eDP-1 --mode 2880x1800_60.00 --gamma 1.0:1.0:1.0
+# this was just for when you were using laptop only, but this suffices i think
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
 exec_always --no-startup-id killall autotiling; autotiling
+exec_always --no-startup-id killall ~/utils/picom && ~/utils/picom
+
 exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
-# exec_always --no-startup-id killall ~/utils/picom; ~/utils/picom
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
 exec_always --no-startup-id brightnessctl set 100
@@ -53,11 +52,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --noeork
 exec --no-startup-id nm-applet
 
 bindsym $super+1 exec --no-startup-id xrandr --output HDMI-1 --auto --mode 1920x1080 --dpi 120 --scale 1.5x1.5 --output eDP-1 --off
-bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --off
+bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
 
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
-bindsym $super+l exec --no-startup-id systemctl suspend && i3lock
+bindsym $super+l exec --no-startup-id i3lock && systemctl suspend
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
 bindsym F5 exec --no-startup-id brightnessctl s +10
@@ -78,7 +77,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec ghostty
+bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Escape kill
 

@@ -1,6 +1,6 @@
 
 [window]
-opacity = 0.95
+opacity = 0.80
 decorations = "Full"
 decorations_theme_variant = "Dark"
 dimensions = { columns = 80, lines = 80 }
@@ -15,13 +15,16 @@ mods = "Control|Shift"
 action = "SpawnNewInstance"
 
 [font]
-size = 14
+size = 10
 
-  [font.normal]
-  family = "Ubuntu Mono"
-  style = "Regular"
+[font.normal]
+family = "BlexMono Nerd Font"
+style = "Regular"
 
 [general]
 import = [
-  "/home/hitori/.npm/_npx/808b709e6234a442/node_modules/alacritty-themes/themes/Kitty.toml"
+	"~/alacritty-theme/themes/soy_custom.toml"
 ]
+
+# me likey 	"~/alacritty-theme/themes/horizon_dark.toml"
+# me likey  "~/alacritty-theme/themes/Mariana.toml"

@@ -128,6 +128,11 @@ require("lazy").setup({
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+
+				-- vim.api.nvim_set_keymap("n", "<leader>wq", "<cmd>:wq<cr>", { noremap = true })
+				-- vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>:q<cr>", { noremap = true })
+				-- vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>:w<cr>", { noremap = true })
+
 				vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", { noremap = true })
 				vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
 
