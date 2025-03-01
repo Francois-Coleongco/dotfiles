@@ -90,7 +90,7 @@ exec i3-msg 'workspace 2; exec evince'
 
 # bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
-bindsym $mod+p exec --no-startup-id firefox --private-window
+bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
 bindsym $mod+m exec --no-startup-id ghostty -e "cd /home/soy/Music && cmus"
 

@@ -54,6 +54,81 @@ require("lazy").setup({
 		{ "ThePrimeagen/vim-be-good" },
 		{ "NStefan002/screenkey.nvim" },
 		{ "andweeb/presence.nvim" },
+		-- { "mong8se/actually.nvim" },
+		{
+			'nvim-lualine/lualine.nvim',
+			requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+		},
+		{
+			'numToStr/Comment.nvim',
+			opts = {
+				-- add any options here
+			}
+		},
+		{
+			"folke/which-key.nvim",
+			event = "VeryLazy",
+			opts = {
+				win = {
+					-- don't allow the popup to overlap with the cursor
+					no_overlap = true,
+					-- width = 1,
+					-- height = { min = 4, max = 25 },
+					-- col = 0,
+					-- row = math.huge,
+					border = "rounded",
+					padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
+					title = true,
+					title_pos = "center",
+					zindex = 1000,
+					-- Additional vim.wo and vim.bo options
+					bo = {},
+					wo = {
+						-- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+					},
+				},
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			},
+			keys = {
+				{
+					"<leader>?",
+					function()
+						require("which-key").show({ global = false })
+					end,
+					desc = "Buffer Local Keymaps (which-key)",
+				},
+			},
+		},
+		-- {
+		-- 	"echasnovski/mini.map",
+		-- 	branch = "stable",
+		-- 	config = function()
+		-- 		require('mini.map').setup()
+		-- 		local map = require('mini.map')
+		-- 		map.setup({
+		-- 			integrations = {
+		-- 				map.gen_integration.builtin_search(),
+		-- 				map.gen_integration.diagnostic({
+		-- 					error = 'DiagnosticFloatingError',
+		-- 					warn  = 'DiagnosticFloatingWarn',
+		-- 					info  = 'DiagnosticFloatingInfo',
+		-- 					hint  = 'DiagnosticFloatingHint',
+		-- 				}),
+		-- 			},
+		-- 			symbols = {
+		-- 				encode = map.gen_encode_symbols.dot('4x2'),
+		-- 			},
+		-- 			window = {
+		-- 				side = 'right',
+		-- 				width = 20, -- set to 1 for a pure scrollbar :)
+		-- 				winblend = 15,
+		-- 				show_integration_count = false,
+		-- 			},
+		-- 		})
+		-- 		map.open()
+		-- 	end
+		-- },
 
 		{
 			"MaximilianLloyd/ascii.nvim",
@@ -125,6 +200,7 @@ require("lazy").setup({
 				lspconfig.jdtls.setup({})
 				lspconfig.ts_ls.setup({})
 				lspconfig.tailwindcss.setup({})
+
 
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -272,67 +348,112 @@ require("nvim-ts-autotag").setup({
 })
 
 require("screenkey").setup({
-    win_opts = {
-        row = vim.o.lines - vim.o.cmdheight - 1,
-        col = vim.o.columns - 1,
-        relative = "editor",
-        anchor = "SE",
-        width = 40,
-        height = 3,
-        border = "single",
-        title = "",
-        title_pos = "center",
-        style = "minimal",
-        focusable = false,
-        noautocmd = true,
-    },
-    compress_after = 3,
-    clear_after = 3,
-    disable = {
-        filetypes = {},
-        buftypes = {},
-        events = false,
-    },
-    show_leader = true,
-    group_mappings = false,
-    display_infront = {},
-    display_behind = {},
-    filter = function(keys)
-        return keys
-    end,
-    keys = {
-        ["<TAB>"] = "󰌒",
-        ["<CR>"] = "󰌑",
-        ["<ESC>"] = "Esc",
-        ["<SPACE>"] = "␣",
-        ["<BS>"] = "󰌥",
-        ["<DEL>"] = "Del",
-        ["<LEFT>"] = "",
-        ["<RIGHT>"] = "",
-        ["<UP>"] = "",
-        ["<DOWN>"] = "",
-        ["<HOME>"] = "Home",
-        ["<END>"] = "End",
-        ["<PAGEUP>"] = "PgUp",
-        ["<PAGEDOWN>"] = "PgDn",
-        ["<INSERT>"] = "Ins",
-        ["<F1>"] = "󱊫",
-        ["<F2>"] = "󱊬",
-        ["<F3>"] = "󱊭",
-        ["<F4>"] = "󱊮",
-        ["<F5>"] = "󱊯",
-        ["<F6>"] = "󱊰",
-        ["<F7>"] = "󱊱",
-        ["<F8>"] = "󱊲",
-        ["<F9>"] = "󱊳",
-        ["<F10>"] = "󱊴",
-        ["<F11>"] = "󱊵",
-        ["<F12>"] = "󱊶",
-        ["CTRL"] = "Ctrl",
-        ["ALT"] = "Alt",
-        ["SUPER"] = "󰘳",
-        ["<leader>"] = "<leader>",
-    },
+	win_opts = {
+		row = vim.o.lines - vim.o.cmdheight - 1,
+		col = vim.o.columns - 1,
+		relative = "editor",
+		anchor = "SE",
+		width = 40,
+		height = 3,
+		border = "single",
+		title = "",
+		title_pos = "center",
+		style = "minimal",
+		focusable = false,
+		noautocmd = true,
+	},
+	compress_after = 3,
+	clear_after = 3,
+	disable = {
+		filetypes = {},
+		buftypes = {},
+		events = false,
+	},
+	show_leader = true,
+	group_mappings = false,
+	display_infront = {},
+	display_behind = {},
+	filter = function(keys)
+		return keys
+	end,
+	keys = {
+		["<TAB>"] = "󰌒",
+		["<CR>"] = "󰌑",
+		["<ESC>"] = "Esc",
+		["<SPACE>"] = "␣",
+		["<BS>"] = "󰌥",
+		["<DEL>"] = "Del",
+		["<LEFT>"] = "",
+		["<RIGHT>"] = "",
+		["<UP>"] = "",
+		["<DOWN>"] = "",
+		["<HOME>"] = "Home",
+		["<END>"] = "End",
+		["<PAGEUP>"] = "PgUp",
+		["<PAGEDOWN>"] = "PgDn",
+		["<INSERT>"] = "Ins",
+		["<F1>"] = "󱊫",
+		["<F2>"] = "󱊬",
+		["<F3>"] = "󱊭",
+		["<F4>"] = "󱊮",
+		["<F5>"] = "󱊯",
+		["<F6>"] = "󱊰",
+		["<F7>"] = "󱊱",
+		["<F8>"] = "󱊲",
+		["<F9>"] = "󱊳",
+		["<F10>"] = "󱊴",
+		["<F11>"] = "󱊵",
+		["<F12>"] = "󱊶",
+		["CTRL"] = "Ctrl",
+		["ALT"] = "Alt",
+		["SUPER"] = "󰘳",
+		["<leader>"] = "<leader>",
+	},
 })
 
 npairs.add_rule(Rule("/*", "*/"))
+
+require('lualine').setup {
+	options = {
+		icons_enabled = true,
+		theme = 'auto',
+		component_separators = { left = '', right = '' },
+		section_separators = { left = '', right = '' },
+		disabled_filetypes = {
+			statusline = {},
+			winbar = {},
+		},
+		ignore_focus = {},
+		always_divide_middle = true,
+		always_show_tabline = true,
+		globalstatus = false,
+		refresh = {
+			statusline = 100,
+			tabline = 100,
+			winbar = 100,
+		}
+	},
+	sections = {
+		lualine_a = { 'mode' },
+		lualine_b = { 'branch', 'diff', 'diagnostics' },
+		lualine_c = { 'filename' },
+		lualine_x = { 'encoding', 'fileformat', 'filetype' },
+		lualine_y = { 'progress' },
+		lualine_z = { 'location' }
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { 'filename' },
+		lualine_x = { 'location' },
+		lualine_y = {},
+		lualine_z = {}
+	},
+	tabline = {},
+	winbar = {},
+	inactive_winbar = {},
+	extensions = {}
+}
+
+require('lualine').setup()
+require('Comment').setup()
