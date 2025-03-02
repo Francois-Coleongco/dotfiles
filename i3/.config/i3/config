@@ -31,8 +31,7 @@ exec_always --no-startup-id feh --bg-fill "$(cat ~/dotfiles/added_bgs/curr_bg)"
 # this was just for when you were using laptop only, but this suffices i think
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
 exec_always --no-startup-id killall autotiling; autotiling
-exec_always --no-startup-id killall ~/utils/picom && ~/utils/picom
-
+exec_always --no-startup-id killall ~/utils/picom; ~/utils/picom
 exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
@@ -240,13 +239,13 @@ floating_maximum_size 1500 x 1500
 #				tray_output none
 #}
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 #1 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #000000 #000000 #ffffff #00ff98   #00ff98
-client.focused_inactive #333333 #5f676a #ffffff #2fb8ad #2fb8ad
-client.unfocused        #2fb8ad #2fb8ad #888888 #2fb8ad   #2fb8ad
+client.focused          #000000 #000000 #42ffcd #42ffcd   #42ffcd
+client.focused_inactive #333333 #5f676a #ffffff #d4be98   #d4be98
+client.unfocused        #d4be98 #888888 #d4be98 #d4be98   #d4be98
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
