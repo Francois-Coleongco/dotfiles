@@ -57,7 +57,7 @@ require("lazy").setup({
 		-- { "mong8se/actually.nvim" },
 		{
 			'nvim-lualine/lualine.nvim',
-			requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+			requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 		},
 		{
 			'numToStr/Comment.nvim',
@@ -211,6 +211,8 @@ require("lazy").setup({
 
 				vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", { noremap = true })
 				vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
+				vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>Alpha<cr>", { noremap = true })
+
 
 				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			end,
@@ -413,47 +415,8 @@ require("screenkey").setup({
 
 npairs.add_rule(Rule("/*", "*/"))
 
-require('lualine').setup {
-	options = {
-		icons_enabled = true,
-		theme = 'auto',
-		component_separators = { left = '', right = '' },
-		section_separators = { left = '', right = '' },
-		disabled_filetypes = {
-			statusline = {},
-			winbar = {},
-		},
-		ignore_focus = {},
-		always_divide_middle = true,
-		always_show_tabline = true,
-		globalstatus = false,
-		refresh = {
-			statusline = 100,
-			tabline = 100,
-			winbar = 100,
-		}
-	},
-	sections = {
-		lualine_a = { 'mode' },
-		lualine_b = { 'branch', 'diff', 'diagnostics' },
-		lualine_c = { 'filename' },
-		lualine_x = { 'encoding', 'fileformat', 'filetype' },
-		lualine_y = { 'progress' },
-		lualine_z = { 'location' }
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { 'filename' },
-		lualine_x = { 'location' },
-		lualine_y = {},
-		lualine_z = {}
-	},
-	tabline = {},
-	winbar = {},
-	inactive_winbar = {},
-	extensions = {}
-}
+require('lualine').setup { options = { theme = 'gruvbox-material' } }
 
-require('lualine').setup()
+
+
 require('Comment').setup()

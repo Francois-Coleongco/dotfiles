@@ -69,9 +69,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-zstyle ':omz:plugins:nvm' lazy yes
+# zstyle ':omz:plugins:nvm' lazy yes
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting nvm)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting) # add nvm here if u want but usually u dont need
 
 source $ZSH/oh-my-zsh.sh
 

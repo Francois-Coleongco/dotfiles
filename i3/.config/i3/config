@@ -38,7 +38,7 @@ exec --no-startup-id xautolock -time 11 -locker "i3lock; systemctl suspend"
 exec_always --no-startup-id brightnessctl set 100
 # exec_always --no-startup-id killall xborders; xborders --border-radius 22 # i dunno why the xborders script doesnt work anymroe :/ might try to figure out why but no time atmm
 
-exec ~/utils/bat_stat
+exec --no-startup-id ~/utils/bat_stat
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -68,6 +68,8 @@ bindsym F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $re
 bindsym F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym F12 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym F9 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym F7 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +5% && $refresh_i3status
+bindsym F8 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -5% && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -76,7 +78,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
 # kill focused window
 bindsym $mod+Escape kill
 
@@ -142,9 +144,9 @@ bindsym $mod+i split v
 bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
