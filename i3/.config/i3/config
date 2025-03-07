@@ -55,7 +55,8 @@ bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1
 
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
-bindsym $super+l exec --no-startup-id i3lock -u && systemctl suspend
+bindsym $super+l exec $HOME/.local/bin/betterlockscreen -l
+# this is the path to use if you are using the locally installed betterlockscreen which i mean why would u not if ur a single user.
 
 bindsym F4 exec --no-startup-id brightnessctl s 10-
 bindsym F5 exec --no-startup-id brightnessctl s +10
