@@ -27,3 +27,4 @@ yeaaa you should proooobably charge before it dies. like... right now? charge it
 					bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
         sleep 20
 done
+
