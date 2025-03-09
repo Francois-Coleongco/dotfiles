@@ -109,8 +109,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.nvm/versions/node/v22.14.0/bin
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH="$PATH:$HOME/.local/bin"
+# export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/go/bin"
 
@@ -136,7 +135,6 @@ export PATH="$PATH:$HOME/utils"
 export PATH="$PATH:$HOME/utils/clangd_19.1.2/bin"
 
 export PATH="$PATH:$HOME/.local/kitty.app/bin"
-export PATH="$PATH:$HOME/.local/bin"
 
 
 alias icat="kitten icat"
