@@ -15,7 +15,7 @@ mods = "Control|Shift"
 action = "SpawnNewInstance"
 
 [font]
-size = 8
+size = 10
 
 [font.normal]
 family = "MartianMono NF"
