@@ -55,6 +55,8 @@ bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1
 
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
+
+
 bindsym $super+l exec systemctl suspend && $HOME/.local/bin/betterlockscreen -l
 
 # this is the path to use if you are using the locally installed betterlockscreen which i mean why would u not if ur a single user.
@@ -88,9 +90,6 @@ bindsym $mod+Escape kill
 
 exec --no-startup-id ~/startup.sh
 
-exec i3-msg 'workspace 1; exec /usr/bin/google-chrome'
-exec i3-msg 'workspace 2; exec evince'
-
 # bindsym $mod+f exec --no-startup-id kitty -e --hold -e fzf
 
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
@@ -102,7 +101,11 @@ bindsym Print exec --no-startup-id flameshot gui
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -b -fn 'Ubuntu Mono-16'
 
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-4/launcher.sh
+bindsym $mod+d exec --no-startup-id ~/rofi/files/launchers/type-1/launcher.sh
+
+# i like
+# type-4 launcher style 7
+# type-1 launcher style 3
 
 # NOTE the font here must be two larger than the global font up there so when dmenu runs it covers just enough of the status bar
 

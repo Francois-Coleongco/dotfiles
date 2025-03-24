@@ -6,8 +6,8 @@ decorations_theme_variant = "Dark"
 dimensions = { columns = 80, lines = 80 }
 
   [window.padding]
-  x = 8
-  y = 8
+  x = 16
+  y = 16
 
 [[keyboard.bindings]]
 key = "N"

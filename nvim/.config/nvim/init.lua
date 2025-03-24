@@ -1,3 +1,11 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
@@ -7,6 +15,7 @@ vim.cmd [[
   highlight Normal ctermbg=none
   highlight NonText ctermbg=none
 ]]
+
 
 ---- Run :Screenkey toggle on startup
 --vim.api.nvim_create_autocmd("VimEnter", {
@@ -27,9 +36,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 	vim.lsp.handlers.hover, {
 		border = "rounded" -- You can also use "single", "double", etc.
 	}
-)
-
--- This handler is responsible for showing the hover window with borders
+)                    -- This handler is responsible for showing the hover window with borders
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -48,9 +55,30 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
+-- plugins
 require("lazy").setup({
 	spec = {
+		{ 'nvim-lua/popup.nvim' },
+		{ 'nvim-telescope/telescope-media-files.nvim' },
+		{ 'nvim-tree/nvim-tree.lua' },
+		{
+			'olivercederborg/poimandres.nvim',
+			lazy = false,
+			priority = 1000,
+			config = function()
+				require('poimandres').setup {
+					-- leave this setup function empty for default config
+					-- or refer to the configuration section
+					-- for configuration options
+				}
+			end,
 
+			-- optionally set the colorscheme within lazy config
+			init = function()
+				vim.cmd("colorscheme poimandres")
+			end
+		},
+		{ "laytan/cloak.nvim" },
 		{ "ThePrimeagen/vim-be-good" },
 		{ "NStefan002/screenkey.nvim" },
 		{ "andweeb/presence.nvim" },
@@ -58,6 +86,7 @@ require("lazy").setup({
 		{
 			'nvim-lualine/lualine.nvim',
 			requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+
 		},
 		{
 			'numToStr/Comment.nvim',
@@ -267,6 +296,43 @@ require("lazy").setup({
 				-- refer to the configuration section below
 			},
 		},
+		{
+			"folke/trouble.nvim",
+			opts = {}, -- for default options, refer to the configuration section for custom setup.
+			cmd = "Trouble",
+			keys = {
+				{
+					"<leader>xx",
+					"<cmd>Trouble diagnostics toggle<cr>",
+					desc = "Diagnostics (Trouble)",
+				},
+				{
+					"<leader>xX",
+					"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+					desc = "Buffer Diagnostics (Trouble)",
+				},
+				{
+					"<leader>cs",
+					"<cmd>Trouble symbols toggle focus=false<cr>",
+					desc = "Symbols (Trouble)",
+				},
+				{
+					"<leader>cl",
+					"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+					desc = "LSP Definitions / references / ... (Trouble)",
+				},
+				{
+					"<leader>xL",
+					"<cmd>Trouble loclist toggle<cr>",
+					desc = "Location List (Trouble)",
+				},
+				{
+					"<leader>xQ",
+					"<cmd>Trouble qflist toggle<cr>",
+					desc = "Quickfix List (Trouble)",
+				},
+			},
+		},
 	},
 })
 
@@ -278,8 +344,6 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
-vim.api.nvim_set_keymap("n", ";", "$", { noremap = true, silent = true })
-vim.api.nvim_del_keymap("n", "$")
 
 local config = require("nvim-treesitter.configs")
 
@@ -292,6 +356,7 @@ config.setup({
 vim.cmd("set undofile")
 vim.cmd("set termguicolors")
 
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>")
 
 local cmp = require("cmp")
@@ -416,8 +481,24 @@ require("screenkey").setup({
 
 npairs.add_rule(Rule("/*", "*/"))
 
-require('lualine').setup { options = { theme = 'gruvbox-material' } }
+require('telescope').load_extension('media_files')
 
+require 'telescope'.setup {
+	extensions = {
+		media_files = {
+			-- filetypes whitelist
+			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+			filetypes = { "png", "webp", "jpg", "jpeg" },
+			-- find command (defaults to `fd`)
+			find_cmd = "rg"
+		}
+	},
+}
 
+require('lualine').setup { options = { theme = 'iceberg_dark' } }
+
+require('cloak').setup()
 
 require('Comment').setup()
+-- empty setup using defaults
+require("nvim-tree").setup()
