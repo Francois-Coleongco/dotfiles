@@ -15,10 +15,10 @@ mods = "Control|Shift"
 action = "SpawnNewInstance"
 
 [font]
-size = 10
+size = 16
 
 [font.normal]
-family = "MartianMono NF"
+family = "UbuntuMono Nerd Font Mono"
 style = "Regular"
 
 [general]
