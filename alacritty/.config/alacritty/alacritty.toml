@@ -1,6 +1,6 @@
 
 [window]
-opacity = 100
+opacity = 0.98
 decorations = "Full"
 decorations_theme_variant = "Dark"
 dimensions = { columns = 80, lines = 80 }
@@ -15,7 +15,7 @@ mods = "Control|Shift"
 action = "SpawnNewInstance"
 
 [font]
-size = 16
+size = 12
 
 [font.normal]
 family = "UbuntuMono Nerd Font Mono"

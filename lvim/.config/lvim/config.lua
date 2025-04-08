@@ -4,56 +4,104 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
---
-
--- cosmetics
-lvim.transparent_window = false
-lvim.colorscheme = "default"
-
-
-lvim.keys.insert_mode["<A-j>"] = false
-lvim.keys.insert_mode["<A-k>"] = false
-lvim.keys.normal_mode["<A-j>"] = false
-lvim.keys.normal_mode["<A-k>"] = false
-lvim.keys.visual_block_mode["<A-j>"] = false
-lvim.keys.visual_block_mode["<A-k>"] = false
-lvim.keys.visual_block_mode["J"] = false
-lvim.keys.visual_block_mode["K"] = false
-lvim.format_on_save = true
-
-vim.opt.scrolloff = 20
-vim.opt.shiftwidth = 4        -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4           -- insert 2 spaces for a tab
-vim.opt.relativenumber = true -- relative line numbers
-vim.opt.wrap = true           -- wrap lines
 
 vim.opt.clipboard = "unnamedplus"
+vim.g.mapleader = " "
+vim.opt.shiftwidth = 2
+vim.opt.clipboard = "unnamedplus"
+vim.opt.scrolloff = 20
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.number = true
+vim.opt.relativenumber = true -- relative line numbers
+vim.opt.wrap = true -- wrap lines
+
+lvim.colorscheme = "poimandres"
+lvim.transparent_window = true
 
 lvim.plugins = {
+-- Lua
 
-    { "nvim-lua/popup.nvim" },
-    { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope.nvim" },
-    { "nvim-telescope/telescope-media-files.nvim" },
+{ 
+  'olivercederborg/poimandres.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require('poimandres').setup {
+      -- leave this setup function empty for default config
+      -- or refer to the configuration section
+      -- for configuration options
+    }
+  end,
 
-}
+  -- optionally set the colorscheme within lazy config
+  init = function()
+    vim.cmd("colorscheme poimandres")
+  end
 
-require('telescope').load_extension('media_files')
+},
+  {
+    'goolord/alpha-nvim',
+  }
+};
 
-require 'telescope'.setup {
-    extensions = {
-        media_files = {
-            find_cmd = "rg"
-        }
+
+
+local dashboard = require "alpha.themes.dashboard"
+
+local default_header = {
+    type = "text",
+    val = {
+[[⠛⠛⠛⠻⠿⠾⠿⠿⠿⠿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⠀⠀⠀⡀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠈⠉⠉⠙⠙⠛⠛⠛⠛⢛⠿⣿⠦⢴⠀⠀⠀⠀⠀⠨⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⠆⠼⠏⠛⠀⠀⠈⠀⠀⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⢠⠜⢃⣤⣾⡿⠂⠇⠊⠀⢸⠒⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠙⠛⠋⠛⠛⠿⠿⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿]],
+[[⠂⠚⠒⠂⠒⠀⠐⠠⠤⠤⠤⠠⠠⠤⠤⠠⢌⣤⣖⣲⣢⣀⣤⣾⡟⢻⢣⣾⣿⣿⣿⣿⣷⣴⣢⣿⢗⠀⠀⠀⠰⣲⠒⡒⠀⠀⠀⠄⠤⠤⡀⡠⢄⠀⠡⡀⣀⣀⡀⡀⠀⠀⠀⠀]],
+[[⡲⣢⠀⡐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⣅⣴⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠈⠢⣀⣔⣠⣤⣴⣧⣬⣴⣶⣧⣻⣶⣾⣮⣾⣾⣶⣾⣿⣼⣿]],
+[[⣶⣶⣶⣶⣶⣶⣶⣶⣤⣤⣤⣤⣤⣤⣴⣶⣶⣶⣴⣦⣤⣤⣠⡨⠘⢾⡿⠟⣿⣿⣿⣿⣿⠿⠿⠿⣿⡿⢧⠀⠀⣶⢸⢶⣿⡿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⡅⠀⣽⡇⠰⣦⣠⡟⠻⣇⠠⠶⠂⢸⣿⣤⠄⠀⠀⠈⣿⣿⣾⣶⣾⣿⣿⣷⣷⣿⣶⣶⣶⣶⣶⣶⣤⣤⣬⣭⣭]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡽⠀⠀⣿⣿⣿⣿⡿⡠⠀⢻⣿⣷⣶⣿⣿⡟⠀⠀⠀⠀⣱⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⢸⣿⣿⣿⡿⣾⣷⣾⣿⣿⠟⠛⠉⠁⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠘⣿⠹⣿⡿⣷⡽⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡫⣿⣿⣿⡃⣿⠀⠀⠀⠀⡀⠀⠀⡈⢐⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣯⢹⡴⠞⣇⠀⠘⠀⠈⠀⠂⡠⠈⠉⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢛⣯⣶⣿⢳⠛⠟⣛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠿⠿⢿⠿⣿⡿⠿⢿⣿⢿⣿⣿⣿⢿⣿⣿]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢁⣴⣿⣿⣿⣿⠏⣠⡞⠃⢀⠀⠀⠀⠀⠀⠁⠂⡀⠀⢀⠀⠐⠀⠠⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠈⠁⠀⠐⡀⠀]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⣴⣿⣿⣿⡿⢋⣱⡾⠋⠀⠀⠀⠁⠀⠀⠀⠀⢀⡬⠤⠛⠀⠉⠀⠀⠀⠈⠡⠀⠄⠈⢠⣀⡀⠀⠀⠀⡈⠀⠀⠀⠀⠀⠀]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⢼⣿⣿⣿⢿⣶⣿⠟⢠⡀⠁⠀⢀⠀⠺⠠⠠⠺⣫⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠈⢠⣾⣿⣷⣠⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠈⡿⣿⣿⢿⠿⡣⣷⣾⠄⠐⠀⠀⠐⡼⠶⠀⠌⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⠷⠺⠿⠿⠓⠚⠠⠐⠄⠀⠀⠀]],
+[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⣧⣤⣤⣼⣿⣹⢃⣴⣿⡾⢳⠊⠀⢀⠀⠐⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠁⠀⠀⠈]],
     },
-
+    opts = {
+        position = "center",
+        hl = "Type",
+        -- wrap = "overflow";
+    },
 }
 
--- In lv-config.lua or the plugin section
-lvim.plugins = {
-    -- Add plenary.nvim
-    { "nvim-lua/plenary.nvim" },
+local buttons = {
+    type = "group",
+    val = {
+        dashboard.button("SPC ff", "  Find File", ":Telescope find_files<CR>"),
+         { type = "padding", val = 1 },
+        dashboard.button("SPC e", "  New File", ":ene!<CR>"),
+         { type = "padding", val = 1 },
+        dashboard.button("SPC f r", "  Recently Used Files", ":Telescope oldfiles<CR>"),
+         { type = "padding", val = 1 },
+        dashboard.button("SPC gp", "  Greppy", ":Telescope live_grep<CR>"),
+    },
+    position = "center",
+}
 
-    -- Add harpoon plugin
-    { "ThePrimeagen/harpoon" },
+lvim.builtin.alpha.dashboard.config = {
+    layout = {
+         { type = "padding", val = 2 },
+         default_header,
+         { type = "padding", val = 2 },
+         buttons,
+    },
+    opts = {
+        margin = 5,
+        setup = function()
+            vim.cmd [[autocmd alpha_temp DirChanged * lua require('alpha').redraw()]]
+        end,
+    },
 }

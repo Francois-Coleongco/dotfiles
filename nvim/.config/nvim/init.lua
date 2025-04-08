@@ -5,17 +5,15 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
-
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
-vim.cmd [[
+vim.cmd([[
   highlight Normal guibg=none
   highlight NonText guibg=none
   highlight Normal ctermbg=none
   highlight NonText ctermbg=none
-]]
-
+]])
 
 ---- Run :Screenkey toggle on startup
 --vim.api.nvim_create_autocmd("VimEnter", {
@@ -26,17 +24,14 @@ vim.g.mapleader = " "
 vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 20
-vim.opt.tabstop = 2           -- insert 2 spaces for a tab
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.number = true
 vim.opt.relativenumber = true -- relative line numbers
-vim.opt.wrap = true           -- wrap lines
+vim.opt.wrap = true -- wrap lines
 
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-	vim.lsp.handlers.hover, {
-		border = "rounded" -- You can also use "single", "double", etc.
-	}
-)                    -- This handler is responsible for showing the hover window with borders
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded", -- You can also use "single", "double", etc.
+}) -- This handler is responsible for showing the hover window with borders
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -45,7 +40,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
+			{ out, "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -58,25 +53,25 @@ vim.opt.rtp:prepend(lazypath)
 -- plugins
 require("lazy").setup({
 	spec = {
-		{ 'nvim-lua/popup.nvim' },
-		{ 'nvim-telescope/telescope-media-files.nvim' },
-		{ 'nvim-tree/nvim-tree.lua' },
+		{ "nvim-lua/popup.nvim" },
+		{ "nvim-telescope/telescope-media-files.nvim" },
+		{ "nvim-tree/nvim-tree.lua" },
 		{
-			'olivercederborg/poimandres.nvim',
+			"olivercederborg/poimandres.nvim",
 			lazy = false,
 			priority = 1000,
 			config = function()
-				require('poimandres').setup {
+				require("poimandres").setup({
 					-- leave this setup function empty for default config
 					-- or refer to the configuration section
 					-- for configuration options
-				}
+				})
 			end,
 
 			-- optionally set the colorscheme within lazy config
 			init = function()
 				vim.cmd("colorscheme poimandres")
-			end
+			end,
 		},
 		{ "laytan/cloak.nvim" },
 		{ "ThePrimeagen/vim-be-good" },
@@ -84,15 +79,14 @@ require("lazy").setup({
 		{ "andweeb/presence.nvim" },
 		-- { "mong8se/actually.nvim" },
 		{
-			'nvim-lualine/lualine.nvim',
-			requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-
+			"nvim-lualine/lualine.nvim",
+			requires = { "nvim-tree/nvim-web-devicons", opt = true },
 		},
 		{
-			'numToStr/Comment.nvim',
+			"numToStr/Comment.nvim",
 			opts = {
 				-- add any options here
-			}
+			},
 		},
 		{
 			"folke/which-key.nvim",
@@ -162,13 +156,17 @@ require("lazy").setup({
 		{
 			"MaximilianLloyd/ascii.nvim",
 			requires = {
-				"MunifTanjim/nui.nvim"
-			}
+				"MunifTanjim/nui.nvim",
+			},
 		},
 		{
 			"goolord/alpha-nvim",
+			dependencies = {
+				"echasnovski/mini.icons",
+				"nvim-lua/plenary.nvim",
+			},
 			config = function()
-				require("alpha").setup(require("alpha.themes.dashboard").config)
+				require("alpha").setup(require("alpha.themes.mine").config)
 			end,
 		},
 		{
@@ -230,7 +228,6 @@ require("lazy").setup({
 				lspconfig.ts_ls.setup({})
 				lspconfig.tailwindcss.setup({})
 
-
 				vim.keymap.set("n", " K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
@@ -242,7 +239,6 @@ require("lazy").setup({
 				vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", { noremap = true })
 				vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
 				vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>Alpha<cr>", { noremap = true })
-
 
 				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			end,
@@ -384,7 +380,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" }, -- LSP completion
 		{ name = "buffer" }, -- Buffer completion
-		{ name = "path" },   -- Path completion
+		{ name = "path" }, -- Path completion
 		{ name = "luasnip" }, -- LuaSnip for snippets
 	},
 	experimental = {
@@ -401,8 +397,8 @@ local Rule = require("nvim-autopairs.rule")
 require("nvim-ts-autotag").setup({
 	opts = {
 		-- Defaults
-		enable_close = true,         -- Auto close tags
-		enable_rename = true,        -- Auto rename pairs of tags
+		enable_close = true, -- Auto close tags
+		enable_rename = true, -- Auto rename pairs of tags
 		enable_close_on_slash = false, -- Auto close on trailing </
 	},
 	-- Also override individual filetype configs, these take priority.
@@ -481,24 +477,24 @@ require("screenkey").setup({
 
 npairs.add_rule(Rule("/*", "*/"))
 
-require('telescope').load_extension('media_files')
+require("telescope").load_extension("media_files")
 
-require 'telescope'.setup {
+require("telescope").setup({
 	extensions = {
 		media_files = {
 			-- filetypes whitelist
 			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
 			filetypes = { "png", "webp", "jpg", "jpeg" },
 			-- find command (defaults to `fd`)
-			find_cmd = "rg"
-		}
+			find_cmd = "rg",
+		},
 	},
-}
+})
 
-require('lualine').setup { options = { theme = 'iceberg_dark' } }
+require("lualine").setup({ options = { theme = "iceberg_dark" } })
 
-require('cloak').setup()
+require("cloak").setup()
 
-require('Comment').setup()
+require("Comment").setup()
 -- empty setup using defaults
 require("nvim-tree").setup()

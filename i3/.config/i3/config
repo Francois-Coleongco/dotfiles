@@ -31,7 +31,8 @@ exec_always --no-startup-id feh --bg-fill "$(cat ~/added_bgs/curr_bg)"
 # this was just for when you were using laptop only, but this suffices i think
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
 exec_always --no-startup-id killall autotiling; autotiling
-# exec_always --no-startup-id killall picom; picom --backend=glx
+exec_always --no-startup-id killall picom; picom --backend=glx
+exec_always --no-startup-id ~/dotfiles/alacritty/size_display_toggler.sh
 exec --no-startup-id betterlockscreen -u ~/added_bgs/curr_bg
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
@@ -55,6 +56,7 @@ bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1
 
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
+bindsym $super+d exec --no-startup-id killall Discord
 
 
 bindsym $super+l exec systemctl suspend && $HOME/.local/bin/betterlockscreen -l
@@ -250,7 +252,7 @@ for_window [class="^.*"] border pixel 2
 #1 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #000000 #000000 #42ffcd #42ffcd   #42ffcd
+client.focused          #ffa624 #ffa624 #ffa624 #ffa624   #ffa624
 client.focused_inactive #333333 #5f676a #ffffff #d4be98   #d4be98
 client.unfocused        #d4be98 #888888 #d4be98 #d4be98   #d4be98
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
