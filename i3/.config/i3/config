@@ -26,7 +26,7 @@ font pango:BlexMono Nerd Font 16
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
+exec_always exec xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
 exec_always --no-startup-id feh --bg-fill "$(cat ~/added_bgs/curr_bg)"
 # this was just for when you were using laptop only, but this suffices i think
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
@@ -57,7 +57,6 @@ bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
 bindsym $super+d exec --no-startup-id killall Discord
-
 
 bindsym $super+l exec systemctl suspend && $HOME/.local/bin/betterlockscreen -l
 
