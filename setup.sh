@@ -7,6 +7,7 @@ sudo apt install git i3 polybar stow
 sudo apt-get install ninja-build gettext cmake curl build-essential
 
 sudo apt install neovim
+LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh)
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -14,7 +15,7 @@ cd ~/dotfiles
 
 stow tmux
 stow zsh
-stow nvim
+stow lvim
 stow i3
 stow polybar
 
