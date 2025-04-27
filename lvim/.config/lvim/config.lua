@@ -44,7 +44,9 @@ lvim.plugins = {
   },
   {
     'goolord/alpha-nvim',
-  }
+  },
+  { "andweeb/presence.nvim" },
+
 };
 
 

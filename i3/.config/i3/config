@@ -7,8 +7,8 @@
 default_border pixel 4
 
 # Set rounded corners for all windows
-gaps inner 8
-gaps outer 8
+gaps inner 4
+gaps outer 4
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -83,8 +83,9 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id cool-retro-term
 # kill focused window
+
 bindsym $mod+Escape kill
 
 # user added
@@ -95,7 +96,7 @@ exec --no-startup-id ~/startup.sh
 
 bindsym $mod+p exec --no-startup-id brave-browser --incognito
 
-bindsym $mod+m exec --no-startup-id alacritty -e bash -c "cd $HOME/Music && cmus"
+bindsym $mod+m exec --no-startup-id cool-retro-term -e bash -c "cd $HOME/Music && cmus"
 
 bindsym Print exec --no-startup-id flameshot gui
 
