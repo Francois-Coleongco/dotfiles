@@ -138,7 +138,6 @@ export PATH="$PATH:$HOME/UNI/cmpmut_275_everything/utils"
 
 alias icat="kitten icat"
 
-alias vim="lvim"
 alias x="exit"
 alias c="clear"
 alias gt="git"
