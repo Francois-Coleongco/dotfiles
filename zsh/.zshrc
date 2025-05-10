@@ -132,11 +132,8 @@ moosic () {
 #export PATH="$HOME/spring-3.4.1/bin:$PATH"
 
 export PATH="$PATH:$HOME/utils"
-export PATH="$PATH:$HOME/utils/clangd_19.1.2/bin"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
-
-export PATH="$PATH:$HOME/.local/kitty.app/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/UNI/cmpmut_275_everything/utils"
 
 alias icat="kitten icat"

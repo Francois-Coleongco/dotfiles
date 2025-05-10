@@ -48,37 +48,3 @@ lvim.plugins = {
   { "andweeb/presence.nvim" },
 
 };
-
-
-
-local dashboard = require "alpha.themes.dashboard"
-local default_header = require "alpha_conf.header"
-
-local buttons = {
-  type = "group",
-  val = {
-    dashboard.button("SPC ff", "  Find File", ":Telescope find_files<CR>"),
-    { type = "padding", val = 1 },
-    dashboard.button("SPC e", "  New File", ":ene!<CR>"),
-    { type = "padding", val = 1 },
-    dashboard.button("SPC f r", "  Recently Used Files", ":Telescope oldfiles<CR>"),
-    { type = "padding", val = 1 },
-    dashboard.button("SPC gp", "  Greppy", ":Telescope live_grep<CR>"),
-  },
-  position = "center",
-}
-
-lvim.builtin.alpha.dashboard.config = {
-  layout = {
-    { type = "padding", val = 2 },
-    default_header,
-    { type = "padding", val = 2 },
-    buttons,
-  },
-  opts = {
-    margin = 5,
-    setup = function()
-      vim.cmd [[autocmd alpha_temp DirChanged * lua require('alpha').redraw()]]
-    end,
-  },
-}

@@ -1,0 +1,7 @@
+last line should look like this:
+
+exec -a "$0" "$HERE/vivaldi-bin" "$@" --enable-features=UseOzonePlatform --ozone-platform=wayland
+
+
+the added portion is:
+--enable-features=UseOzonePlatform --ozone-platform=wayland

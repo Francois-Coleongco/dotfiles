@@ -1,6 +1,6 @@
 
 [window]
-opacity = 0.98
+opacity = 0.8
 decorations = "Full"
 decorations_theme_variant = "Dark"
 dimensions = { columns = 80, lines = 80 }
@@ -18,7 +18,7 @@ action = "SpawnNewInstance"
 size = 14
 
 [font.normal]
-family = "UbuntuMono Nerd Font Mono"
+family = "ComicShannsMono Nerd Font"
 style = "Regular"
 
 [general]
