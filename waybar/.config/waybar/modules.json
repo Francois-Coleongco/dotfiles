@@ -99,7 +99,7 @@
   // Network
   "network": {
     "format": "{ifname}",
-    "format-wifi": "   {signalStrength}%  ", //  {bandwidthDownBytes}  {bandwidthUpBytes}
+    "format-wifi": "    {signalStrength}%   ", //  {bandwidthDownBytes}  {bandwidthUpBytes}
     "format-ethernet": "     {bandwidthDownBytes}  {bandwidthUpBytes}  ",
     "format-disconnected": " Not connected ",
     "tooltip-format": "   {ifname} via {gwaddri} ",
