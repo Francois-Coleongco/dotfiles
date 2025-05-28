@@ -4,7 +4,7 @@ bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
 
 bat_perc=$(acpi -b | awk -F'[,%]' '{print $2}' | sed 's/^ *//')
 
-crit_perc=70
+crit_perc=90
 
 echo this is bat_status
 echo ${bat_status}
@@ -19,9 +19,7 @@ while true; do
 
 					if [ ${bat_perc} -le "$crit_perc" ] && [[ ${bat_status} == "Discharging" ]]; then
 						echo FUCK
-                notify-send -t 60000 -u critical "Low battery: $bat_perc%
-
-yeaaa you should proooobably charge before it dies. like... right now? charge it. now. CHARGE. CHARGE ME. GIVE ME FOODDDDD"
+hyprctl notify -1 10000 "rgb(ff1ea3)" "CHARGE MEE PLWEAASESEEE"
         fi
 
 					bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
