@@ -27,20 +27,18 @@ font pango:BlexMono Nerd Font 16
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
 exec_always exec xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
-output * background ~/added_bgs/wallhaven-3qozp3.jpg fill
+exec waybar
+output * background ~/added_bgs/wallhaven-9oxjvd.png fill
 
 
 # this was just for when you were using laptop only, but this suffices i think
-bar swaybar_command waybar
 
 output eDP-1 mode 2880x1800@60.001Hz position 0,0
 
-exec_always killall autotiling; autotiling
 exec_always --no-startup-id ~/dotfiles/alacritty/size_display_toggler.sh
 exec --no-startup-id betterlockscreen -u ~/added_bgs/curr_bg
-# --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
-exec_always --no-startup-id brightnessctl set 50
+exec_always --no-startup-id brightnessctl set 40 ; autotiling
 # exec_always --no-startup-id killall xborders; xborders --border-radius 22 # i dunno why the xborders script doesnt work anymroe :/ might try to figure out why but no time atmm
 
 exec --no-startup-id ~/utils/bat_stat
@@ -58,11 +56,11 @@ exec --no-startup-id nm-applet
 bindsym $super+1 exec --no-startup-id xrandr --output HDMI-1 --auto --mode 1920x1080 --dpi 120 --scale 1.5x1.5 --output eDP-1 --off
 bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
 
-bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
-
-bindsym $super+d exec --no-startup-id killall Discord
+bindsym $super+m exec --no-startup-id ~/dotfiles/fuzzel/fuzzel-powermenu.sh
 
 bindsym $super+l exec systemctl suspend && $HOME/.local/bin/betterlockscreen -l
+
+bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/screenshot-$(date +'%Y-%m-%d-%H%M%S').png | wl-copy
 
 # this is the path to use if you are using the locally installed betterlockscreen which i mean why would u not if ur a single user.
 
@@ -101,8 +99,6 @@ exec --no-startup-id ~/startup.sh
 bindsym $mod+p exec --no-startup-id librewolf --private-window
 
 bindsym $mod+m exec --no-startup-id alacritty -e bash -c "cd $HOME/Music && cmus"
-
-bindsym Print exec --no-startup-id flameshot gui
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id wmenu-run -b
@@ -247,21 +243,21 @@ input "1267:12933:ASUE1412:00_04F3:3285_Touchpad" {
 
 # bar {
 #     position top
-
+#
 #     # When the status_command prints a new line to stdout, swaybar updates.
 #     # The default just shows the current date and time.
 #     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
+#
 #     colors {
 #         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
+#         background #000000
+#         inactive_workspace #323232 #323232 #5c5c5c
 #     }
 # }
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-floating_minimum_size 1600 x 800
-floating_maximum_size 1500 x 1500
+floating_minimum_size 200 x 200
+floating_maximum_size 1400 x 1400
 
 for_window [class="^.*"] border pixel 2
 #1 

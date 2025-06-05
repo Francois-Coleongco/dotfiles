@@ -1,6 +1,9 @@
+import = [
+  "/home/sleepy/node_modules/alacritty-themes/themes/Seoul256.toml"
+]
 
 [window]
-opacity = 0.8
+opacity = 0.94
 decorations = "Full"
 decorations_theme_variant = "Dark"
 
@@ -21,10 +24,8 @@ action = "SpawnNewInstance"
 size = 14
 
   [font.normal]
-  family = "CaskaydiaMono NF"
+  family = "ComicShannsMono Nerd Font"
   style = "Regular"
 
 [general]
-import = [
-  "/home/sleepy/.config/alacritty/themes/themes/dracula.toml"
-]
+import = [ "~/alacritty-theme/themes/soy_custom.toml" ]

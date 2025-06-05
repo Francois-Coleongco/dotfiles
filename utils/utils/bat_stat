@@ -1,28 +1,11 @@
 #!/bin/bash
 
-bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
-
-bat_perc=$(acpi -b | awk -F'[,%]' '{print $2}' | sed 's/^ *//')
-
-crit_perc=90
-
-echo this is bat_status
-echo ${bat_status}
-
-echo this is bat_perc
-echo ${bat_perc}
-
-echo this is crit_perc
-echo ${crit_perc}
-
 while true; do
-
-					if [ ${bat_perc} -le "$crit_perc" ] && [[ ${bat_status} == "Discharging" ]]; then
-						echo FUCK
-hyprctl notify -1 10000 "rgb(ff1ea3)" "CHARGE MEE PLWEAASESEEE"
-        fi
-
-					bat_status=$(acpi -b | awk '{print $3}' | sed 's/,//')
-        sleep 20
+    battery=$(upower -i "$(upower -e | grep BAT)" | grep -E "percentage" | awk '{print $2}' | tr -d '%')
+    if [ "$battery" -le "40" ]; then
+        hyprctl notify 0 5000 0 "  Low battery: ${battery}%" 
+        sleep 240
+    else
+        sleep 120
+    fi
 done
-
