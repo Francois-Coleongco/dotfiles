@@ -143,4 +143,6 @@ alias c="clear"
 alias gt="git"
 alias cmus="cd ~/Music/ && cmus"
 
-alias proj="tmux new -s proj -c ~/vault/MFSC"
+alias proj="echo 'to new heights'"
+alias ideas="cd ~/vault/ideas/"
+# "tmux new -s proj -c ~/vault/MFSC"

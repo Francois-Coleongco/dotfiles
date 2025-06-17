@@ -86,7 +86,7 @@
 
   // Clock
   "clock": {
-    // "timezone": "America/New_York",
+    "timezone": "Asia/Manila",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "󰥔   {0:%H:%M} ",
     "format-alt": "󰥔  {0:%H:%M}   {0:%d-%m-%Y} "
@@ -99,11 +99,11 @@
   // Network
   "network": {
     "format": "{ifname}",
-    "format-wifi": "   {signalStrength}%  ", //  {bandwidthDownBytes}  {bandwidthUpBytes}
+    "format-wifi": "    {signalStrength}%  ", //  {bandwidthDownBytes}  {bandwidthUpBytes}
     "format-ethernet": "     {bandwidthDownBytes}  {bandwidthUpBytes}  ",
     "format-disconnected": " Not connected ",
     "tooltip-format": "   {ifname} via {gwaddri} ",
-    "tooltip-format-wifi": "    {essid} ({signalStrength}%) ",
+    "tooltip-format-wifi": "     {essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
@@ -115,13 +115,13 @@
   "battery": {
     "states": {
       // "good": 95,
-      "warning": 30,
-      "critical": 15
+      "warning": 40,
+      "critical": 20
     },
-    "format": " {icon}   {capacity}% ",
-    "format-charging": "   {capacity}% ",
-    "format-plugged": "   {capacity}% ",
-    "format-alt": "{icon}  {time}",
+    "format": "  {icon}   {capacity}%  ",
+    "format-charging": "    {capacity}%  ",
+    "format-plugged": "    {capacity}%  ",
+    "format-alt": "  {icon}  {time}  ",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": [" ", " ", " ", " ", " "]
