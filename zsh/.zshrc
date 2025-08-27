@@ -69,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy yes
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting) # add nvm here if u want but usually u dont need
 
@@ -107,7 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # languages
 
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/.nvm/versions/node/v22.14.0/bin
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH=$PATH:$HOME/.nvm/versions/node/v22.17.1/bin/
 
 # export PATH="$PATH:$HOME/.local/bin"
 
@@ -141,8 +142,14 @@ alias icat="kitten icat"
 alias x="exit"
 alias c="clear"
 alias gt="git"
-alias cmus="cd ~/Music/ && cmus"
 
-alias proj="echo 'to new heights'"
+export PATH="$PATH:$HOME/.local/bin/idea-IC-251.26927.53/bin"
+alias proj="tmux new -s proj -c ~/vault/ai_video_editor/"
+alias site="tmux new -s site -c  ~/vault/ecliptic-equinox/"
 alias ideas="cd ~/vault/ideas/"
+alias open="nautilus ."
 # "tmux new -s proj -c ~/vault/MFSC"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -20,7 +20,7 @@
     "battery",
     "custom/appmenu",
     "group/quicklinks",
-    "tray",
+    // "tray",
     "hyprland/window",
   ],
   "modules-center": [
