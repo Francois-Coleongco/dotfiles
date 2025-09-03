@@ -135,7 +135,6 @@ moosic () {
 export PATH="$PATH:$HOME/utils"
 
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/UNI/cmpmut_275_everything/utils"
 
 alias icat="kitten icat"
 
@@ -144,9 +143,8 @@ alias c="clear"
 alias gt="git"
 
 export PATH="$PATH:$HOME/.local/bin/idea-IC-251.26927.53/bin"
-alias proj="tmux new -s proj -c ~/vault/ai_video_editor/"
+alias proj="tmux new -s proj -c ~/vault/keepitrolling/"
 alias site="tmux new -s site -c  ~/vault/ecliptic-equinox/"
-alias ideas="cd ~/vault/ideas/"
 alias open="nautilus ."
 # "tmux new -s proj -c ~/vault/MFSC"
 
