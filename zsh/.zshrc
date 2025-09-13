@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH=$PATH:$HOME/.nvm/versions/node/v22.17.1/bin/
+export PATH=$PATH:$HOME/.nvm/versions/node/v22.19.0/bin/
 
 # export PATH="$PATH:$HOME/.local/bin"
 
@@ -136,6 +136,8 @@ export PATH="$PATH:$HOME/utils"
 
 export PATH="$PATH:$HOME/.local/bin"
 
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 alias icat="kitten icat"
 
 alias x="exit"
@@ -151,3 +153,4 @@ alias open="nautilus ."
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/mobile_development/flutter/bin:$PATH"
