@@ -145,12 +145,13 @@ alias c="clear"
 alias gt="git"
 
 export PATH="$PATH:$HOME/.local/bin/idea-IC-251.26927.53/bin"
-alias proj="tmux new -s proj -c ~/vault/keepitrolling/"
-alias site="tmux new -s site -c  ~/vault/ecliptic-equinox/"
-alias open="nautilus ."
+alias proj="tmux new -s proj -c ~/vault/KeepItRolling/"
+alias site="tmux new -s site -c  ~/vault/fransys/"
 # "tmux new -s proj -c ~/vault/MFSC"
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$HOME/mobile_development/flutter/bin:$PATH"
+
+[ -f "/home/soy/.ghcup/env" ] && . "/home/soy/.ghcup/env" # ghcup-env
