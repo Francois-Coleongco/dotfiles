@@ -149,6 +149,13 @@ alias gt="git"
 export PATH="$PATH:$HOME/.local/bin/idea-IC-251.26927.53/bin"
 alias proj="tmux new -s proj -c ~/vault/KeepItRolling/"
 alias site="tmux new -s site -c  ~/vault/fransys/"
+
+
+# obsidian things
+
+alias push_obby="cd ~/notes; git status; git add .; git commit -m"update"; git push; cd -"
+alias pull_obby="cd ~/notes; git status; git pull; cd -"
+
 # "tmux new -s proj -c ~/vault/MFSC"
 
 # export NVM_DIR="$HOME/.nvm"

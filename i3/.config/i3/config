@@ -32,7 +32,7 @@ exec_always --no-startup-id feh --bg-fill ~/added_bgs/wallhaven-rqr2xq.png
 # this was just for when you were using laptop only, but this suffices i think
 exec --no-startup-id easyeffects --gapplication-service
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
-exec_always --no-startup-id killall picom; picom --backend=glx
+exec_always --no-startup-id killall ~/picom/build/src/picom; ~/picom/build/src/picom --backend=glx
 exec_always --no-startup-id ~/dotfiles/alacritty/size_display_toggler.sh
 
 exec --no-startup-id betterlockscreen -u ~/added_bgs/wallhaven-rqr2xq.png
