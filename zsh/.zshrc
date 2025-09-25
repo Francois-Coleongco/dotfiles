@@ -108,9 +108,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH=$PATH:$HOME/.nvm/versions/node/v22.19.0/bin/
+export PATH=$PATH:$HOME/.nvm/versions/node/v22.20.0/bin
 
-# export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/go/bin"
 
@@ -135,6 +135,8 @@ moosic () {
 export PATH="$PATH:$HOME/utils"
 
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/kitty.app/bin"
+
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 

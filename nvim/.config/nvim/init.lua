@@ -1027,3 +1027,5 @@ require('lazy').setup({
 
 vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, {})
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', {})
+
+vim.opt.clipboard = 'unnamedplus'

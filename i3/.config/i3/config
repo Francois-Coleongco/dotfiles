@@ -4,11 +4,12 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
+
 default_border pixel 4
 
 # Set rounded corners for all windows
-gaps inner 4
-gaps outer 4
+gaps inner 8
+gaps outer 8
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -17,7 +18,7 @@ set $mod Mod1
 set $super Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:BlexMono Nerd Font 16
+font pango:RecMonoLinear Nerd Font 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -26,14 +27,15 @@ font pango:BlexMono Nerd Font 16
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
-exec_always exec xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
-exec_always --no-startup-id feh --bg-fill "$(cat ~/added_bgs/curr_bg)"
+exec_always exec xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --dpi 192 --output HDMI-1 --off
+exec_always --no-startup-id feh --bg-fill ~/added_bgs/wallhaven-rqr2xq.png
 # this was just for when you were using laptop only, but this suffices i think
+exec --no-startup-id easyeffects --gapplication-service
 exec_always --no-startup-id killall polybar; polybar example --config=~/.config/polybar/config.ini
-exec_always --no-startup-id killall autotiling; autotiling
 exec_always --no-startup-id killall picom; picom --backend=glx
 exec_always --no-startup-id ~/dotfiles/alacritty/size_display_toggler.sh
-exec --no-startup-id betterlockscreen -u ~/added_bgs/curr_bg
+
+exec --no-startup-id betterlockscreen -u ~/added_bgs/wallhaven-rqr2xq.png
 # --corner-radius 20
 # NOTE FOR THIS TO WORK YOU NEED TO DO: sudo usermod -aG video $(whoami)
 exec_always --no-startup-id brightnessctl set 100
@@ -52,7 +54,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --noeork
 exec --no-startup-id nm-applet
 
 bindsym $super+1 exec --no-startup-id xrandr --output HDMI-1 --auto --mode 1920x1080 --dpi 120 --scale 1.5x1.5 --output eDP-1 --off
-bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1800 --rate 60.00 --output HDMI-1 --off
+bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1800 --dpi 120 --rate 60.00 --output HDMI-1 --off
 
 bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
@@ -83,9 +85,9 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id cool-retro-term
-# kill focused window
+bindsym $mod+Return exec --no-startup-id /home/soy/.local/kitty.app/bin/kitty
 
+# kill focused window
 bindsym $mod+Escape kill
 
 # user added
@@ -103,7 +105,7 @@ bindsym Print exec --no-startup-id flameshot gui
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -b -fn 'Ubuntu Mono-16'
 
-bindsym $mod+d exec --no-startup-id ~/rofi/files/launchers/type-1/launcher.sh
+bindsym $mod+d exec --no-startup-id dmenu_run -b
 
 # i like
 # type-4 launcher style 7
@@ -240,8 +242,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-floating_minimum_size 1600 x 800
-floating_maximum_size 1500 x 1500
+floating_maximum_size 800 x 800
 
 #bar {
 #        status_command i3status
@@ -259,3 +260,4 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
+
