@@ -41,7 +41,9 @@ exec --no-startup-id betterlockscreen -u ~/added_bgs/wallhaven-rqr2xq.png
 exec_always --no-startup-id brightnessctl set 100
 # exec_always --no-startup-id killall xborders; xborders --border-radius 22 # i dunno why the xborders script doesnt work anymroe :/ might try to figure out why but no time atmm
 
-exec --no-startup-id ~/utils/bat_stat
+exec_always --no-startup-id ~/utils/bat_stat
+
+exec --no-startup-id evince
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 

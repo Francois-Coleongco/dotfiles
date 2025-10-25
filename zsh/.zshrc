@@ -147,7 +147,7 @@ alias c="clear"
 alias gt="git"
 
 export PATH="$PATH:$HOME/.local/bin/idea-IC-251.26927.53/bin"
-alias proj="tmux new -s proj -c ~/vault/KeepItRolling/"
+alias proj="tmux new -s proj -c ~/vault/IN_PROGRESS/KeepItRolling/"
 alias site="tmux new -s site -c  ~/vault/fransys/"
 
 

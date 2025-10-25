@@ -182,6 +182,7 @@ vim.o.confirm = true
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader>h', '<cmd>noh<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -680,7 +681,15 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          cmd = {
+            'clangd',
+            '--query-driver=/usr/bin/g++-14',
+            '--background-index',
+            '--clang-tidy',
+            '--enable-config',
+          },
+        },
         gopls = {},
         pyright = {},
         rust_analyzer = {},
