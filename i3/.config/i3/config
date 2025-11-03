@@ -44,6 +44,7 @@ exec_always --no-startup-id brightnessctl set 100
 exec_always --no-startup-id ~/utils/bat_stat
 
 exec --no-startup-id evince
+exec --no-startup-id /home/soy/.local/kitty.app/bin/kitty --detach nvim ~/uni/second/phil/essay
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -57,8 +58,6 @@ exec --no-startup-id nm-applet
 
 bindsym $super+1 exec --no-startup-id xrandr --output HDMI-1 --auto --mode 1920x1080 --dpi 120 --scale 1.5x1.5 --output eDP-1 --off
 bindsym $super+2 exec --no-startup-id xrandr --output eDP-1 --auto --mode 2880x1800 --dpi 120 --rate 60.00 --output HDMI-1 --off
-
-bindsym $super+m exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
 bindsym $super+d exec --no-startup-id killall Discord
 
@@ -107,7 +106,8 @@ bindsym Print exec --no-startup-id flameshot gui
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -b -fn 'Ubuntu Mono-16'
 
-bindsym $mod+d exec --no-startup-id dmenu_run -b
+bindsym $mod+d exec --no-startup-id rofi -show drun
+# dmenu_run -b
 
 # i like
 # type-4 launcher style 7

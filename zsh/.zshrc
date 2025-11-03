@@ -132,8 +132,6 @@ moosic () {
 #export PATH="$BUN_INSTALL/bin:$PATH"
 #export PATH="$HOME/spring-3.4.1/bin:$PATH"
 
-export PATH="$PATH:$HOME/utils"
-
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/kitty.app/bin"
 
@@ -147,8 +145,8 @@ alias c="clear"
 alias gt="git"
 
 export PATH="$PATH:$HOME/.local/bin/idea-IC-251.26927.53/bin"
-alias proj="tmux new -s proj -c ~/vault/IN_PROGRESS/KeepItRolling/"
-alias site="tmux new -s site -c  ~/vault/fransys/"
+alias proj="tmux new -s proj -c ~/vault/COMPLETE/KeepItRolling/"
+alias uais="tmux new -s UAIS -c ~/UAIS/Clubmate-AI/"
 
 
 # obsidian things
