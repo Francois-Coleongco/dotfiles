@@ -13,4 +13,5 @@ return {
       vim.g.vimtex_view_method = 'zathura'
     end,
   },
+  'OmniSharp/omnisharp-vim',
 }

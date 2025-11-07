@@ -639,6 +639,7 @@ require('lazy').setup({
 
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
+
       vim.diagnostic.config {
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
@@ -686,6 +687,7 @@ require('lazy').setup({
         gopls = {},
         pyright = {},
         rust_analyzer = {},
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -1039,3 +1041,13 @@ vim.api.nvim_create_autocmd({ 'User' }, {
 })
 
 vim.opt.clipboard = 'unnamedplus'
+
+local pid = vim.fn.getpid()
+local omnisharp_bin = '/opt/omnisharp-roslyn/run'
+require('lspconfig').omnisharp.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  cmd = { omnisharp_bin, '--languageserver', '--hostPID', tostring(pid) },
+}

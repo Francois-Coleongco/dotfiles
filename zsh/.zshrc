@@ -151,7 +151,7 @@ alias uais="tmux new -s UAIS -c ~/UAIS/Clubmate-AI/"
 
 # obsidian things
 
-alias push_obby="cd ~/notes; git status; git add .; git commit -m"update"; git push; cd -"
+alias obby_push="cd ~/notes; git status; git add .; git commit -m"update"; git push; cd -"
 alias pull_obby="cd ~/notes; git status; git pull; cd -"
 
 # "tmux new -s proj -c ~/vault/MFSC"
